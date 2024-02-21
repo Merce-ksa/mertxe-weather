@@ -1,7 +1,7 @@
 import Theme from '../../types/theme'
 import './Switch.css'
 
-const Switch = ({theme, setTheme}: Switch) => {
+const Switch = ({theme, setTheme}: SwitchProps) => {
   
   const handleChangeTheme = (event) => {
     event.preventDefault()
@@ -10,8 +10,9 @@ const Switch = ({theme, setTheme}: Switch) => {
   }
 
   return (
-    <div className="container-switch">
+    <div id='switch'>
       <button
+        id='switch-btn'
         type='button'
         value={theme} 
         onClick={(event) => handleChangeTheme(event)}
@@ -22,7 +23,7 @@ const Switch = ({theme, setTheme}: Switch) => {
   )
 }
 
-interface Switch {
+export interface SwitchProps {
   theme: string
   setTheme: (theme: Theme) => void
 }
