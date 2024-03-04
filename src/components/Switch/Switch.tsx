@@ -1,31 +1,30 @@
-import Theme from '../../types/theme'
 import './Switch.css'
+import { MdDarkMode, MdLightMode } from 'react-icons/md'
 
-const Switch = ({theme, setTheme}: SwitchProps) => {
+const Switch = ({themeDark, setThemeDark}: SwitchProps) => {
   
   const handleChangeTheme = (event) => {
     event.preventDefault()
 
-    setTheme(event.target.value === 'light' ? 'dark' : 'light')
+    setThemeDark(!themeDark)
   }
-
+  
   return (
     <div id='switch'>
       <button
         id='switch-btn'
         type='button'
-        value={theme} 
         onClick={(event) => handleChangeTheme(event)}
       >
-        {theme === 'light' ? '🌑' : '🌞'}
+        {themeDark ? <MdLightMode className='theme-icon' /> : <MdDarkMode className='theme-icon'/>}
       </button>
     </div>
   )
 }
 
 export interface SwitchProps {
-  theme: string
-  setTheme: (theme: Theme) => void
+  themeDark: boolean
+  setThemeDark: (theme: boolean) => void
 }
 
 

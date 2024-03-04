@@ -4,3 +4,7 @@ button {
     border: 0;
     font-size: 18px;
 }
+
+.theme-icon {
+    color: var(--text-primary);
+}
