@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import Switch from './components/Switch'
-import Theme from './types/theme'
+import Search from './components/Search'
 
 function App() {
-  const [theme, setTheme] = useState<Theme>('light')
+  const [themeDark, setThemeDark] = useState<boolean>(false)
 
   useEffect(() => {
-    document.body.setAttribute('data-theme', theme)
-  }, [theme])
-
+    document.body.setAttribute('data-theme', themeDark ? 'dark': 'light')
+  }, [themeDark])
+  
   return (
-    <>
-      <Switch theme={theme} setTheme={setTheme} />
+    <div>
+      <Switch themeDark={themeDark} setThemeDark={setThemeDark} />
       <h1>WEATHER APP</h1>
-    </>
+      <Search />
+    </div>
   )
 }
 
