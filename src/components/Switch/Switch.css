@@ -1,7 +1,5 @@
-button {
+.toggle-theme {
     padding: 5px;
-    background-color: transparent;
-    border: 0;
     font-size: 18px;
 }
 

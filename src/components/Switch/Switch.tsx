@@ -15,6 +15,7 @@ const Switch = ({themeDark, setThemeDark}: SwitchProps) => {
         id='switch-btn'
         type='button'
         onClick={(event) => handleChangeTheme(event)}
+        className='toggle-theme'
       >
         {themeDark ? <MdLightMode className='theme-icon' /> : <MdDarkMode className='theme-icon'/>}
       </button>
