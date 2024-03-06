@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 #API key
-src/services/APIConfig.ts
+/src/services/APIConfig.ts
