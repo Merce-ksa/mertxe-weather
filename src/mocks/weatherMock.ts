@@ -1,4 +1,4 @@
-import Weather from '../types/weather'
+import Weather from '../types/WeatherResponse'
 
 const WEATHER_MOCK: Weather = {
   coord: {

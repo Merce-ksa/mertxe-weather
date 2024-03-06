@@ -1,9 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import './Search.css'
 import { BsSearch } from 'react-icons/bs'
-import useForecast from '../../hooks/useForecast'
-
-
 
 function Search () {
   const [location, setLocation] = useState('')

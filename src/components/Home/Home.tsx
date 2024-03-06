@@ -4,9 +4,19 @@ import WEATHER_MOCK from '../../mocks/weatherMock'
 import { TbTemperaturePlus, TbTemperatureMinus } from 'react-icons/tb'
 
 import './Home.css'
+import useWeather from '../../hooks/useWeather'
+import { useEffect } from 'react'
 
 function Home () {
   const { coordinates } = useCoordinates()
+  const { weather, getWeather } = useWeather()
+  
+  useEffect(() => {
+    if (coordinates) {
+      getWeather(coordinates, 'metric')
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [coordinates])
 
   return (
     <div className="container">

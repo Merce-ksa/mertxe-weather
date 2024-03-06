@@ -1,4 +1,4 @@
-interface Weather {
+interface WeatherResponse {
     coord: {
         lon: number
         lat: number
@@ -41,4 +41,4 @@ interface Weather {
       cod: number
 }
 
-export default Weather
+export default WeatherResponse
