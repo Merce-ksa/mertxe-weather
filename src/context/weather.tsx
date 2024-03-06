@@ -1,51 +1,25 @@
 
-import { createContext, useReducer } from 'react'
+import { ReactNode, createContext, useReducer } from 'react'
 import axios from 'axios'
 import weatherFactory from '../types/factories/weatherFactory'
 import { APPId } from '../services/APIConfig'
+import initialStateWeather from '../states/weatherState'
+import {weatherReducer, WEATHER_ACTIONS_TYPES} from '../reducers/weatherReducer'
 
-export const WeatherContext = createContext()
-
-const initialStateWeather = {
-  city: '',
-  coordinates: [],
-  temperature: null,
-  temperatureMax: null,
-  temperatureMin: null,
-  temperatureFeelsLike: null,
-  windSpeed: null,
-  windDeg: null,
-  icon: '',
-  sunrise: null,
-  sunset: null
-
-}
-
-const WEATHER_ACTIONS_TYPES = {
-  GET_WEATHER: 'GET_WEATHER'
-}
-
-const weatherReducer = (state, action) => {
-  switch (action.type) {
-  case WEATHER_ACTIONS_TYPES.GET_WEATHER:
-    return action.payload      
-  default:
-    return state
-  }
-}
-
+export const WeatherContext = createContext({})
 
 function useWeatherReducer () {
   const [state, dispatch] = useReducer(weatherReducer, initialStateWeather)
 
-  const getWeather = async (coordinates: string[], units: string) => {
+  const getWeather = async (coordinates: number[], units: string) => {
     try {
-      const {data} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates[0]}&lon=${coordinates[1]}&lang=sp&units=${units}&appid=${APPId}`)
+      const [latitude, longitude] = coordinates
+      const {data} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&lang=sp&units=${units}&appid=${APPId}`)
           
       const weather = weatherFactory(data)
       
       dispatch({
-        type: 'GET_WEATHER',
+        type: WEATHER_ACTIONS_TYPES.GET_WEATHER,
         payload: weather
       })
 
@@ -57,7 +31,7 @@ function useWeatherReducer () {
   return {state, getWeather}
 }
 
-export function WeatherProvider ({children}) {
+export function WeatherProvider ({children}: { children: ReactNode }) {
   const { state, getWeather } = useWeatherReducer()
   
   return (
