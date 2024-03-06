@@ -1,21 +1,24 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import Switch from './components/Switch'
-import Search from './components/Search'
+import { getPermissionsLocation } from './helpers/getUserLocation'
+import Home from './components/Home'
 
 function App() {
   const [themeDark, setThemeDark] = useState<boolean>(false)
 
   useEffect(() => {
+    getPermissionsLocation()
+  }, [])
+
+  useEffect(() => {
     document.body.setAttribute('data-theme', themeDark ? 'dark': 'light')
   }, [themeDark])
-  
+
   return (
-    <div>
-      <Switch themeDark={themeDark} setThemeDark={setThemeDark} />
-      <h1>WEATHER APP</h1>
-      <Search />
-    </div>
+    <section className='main'>
+      <Home />
+    </section>
+
   )
 }
 
