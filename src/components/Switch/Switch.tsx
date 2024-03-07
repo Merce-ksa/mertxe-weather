@@ -3,14 +3,14 @@ import { MdDarkMode, MdLightMode } from 'react-icons/md'
 
 const Switch = ({themeDark, setThemeDark}: SwitchProps) => {
   
-  const handleChangeTheme = (event) => {
+  const handleChangeTheme = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault()
 
     setThemeDark(!themeDark)
   }
   
   return (
-    <div id='switch'>
+    <div id='switch' data-testid='switchWrapper'>
       <button
         id='switch-btn'
         type='button'
