@@ -5,7 +5,7 @@ import axios from 'axios'
 import BASE_URL from '../constants/url'
 import { APPId } from '../services/APIConfig'
 
-interface WeatherContextType {
+export interface WeatherContextType {
   weather: Weather | null
   getWeather: (coordinates: number[], units: string) => void
 }
