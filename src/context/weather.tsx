@@ -7,7 +7,8 @@ import { APPId } from '../services/APIConfig'
 
 export interface WeatherContextType {
   weather: Weather | null
-  getWeather: (coordinates: number[], units: string) => void
+  getWeatherByCoords: (coordinates: number[], units: string) => void
+  getWeatherByCityName: (cityName: string, units: string) => void
 }
 
 export const WeatherContext = createContext<WeatherContextType>({} as WeatherContextType)
@@ -15,7 +16,7 @@ export const WeatherContext = createContext<WeatherContextType>({} as WeatherCon
 export function WeatherProvider ({children}: { children: ReactNode }) {
   const [weather, setWeather] = useState<Weather | null>(null)
 
-  const getWeather = async (coordinates: number[], units: string) => {
+  const getWeatherByCoords = async (coordinates: number[], units: string) => {
     try {
       const [latitude, longitude] = coordinates
 
@@ -28,11 +29,24 @@ export function WeatherProvider ({children}: { children: ReactNode }) {
       console.error(error)
     }
   }
+
+  const getWeatherByCityName = async (cityName: string, units: string) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/weather?q=${cityName}&units=${units}&appid=${APPId}`)
+      
+      const weatherFormatter = weatherFactory(data)
+      setWeather(weatherFormatter)
+
+    } catch (error) {
+      console.error(error)
+    }
+  }
   
   return (
     <WeatherContext.Provider value={{
       weather,
-      getWeather
+      getWeatherByCoords,
+      getWeatherByCityName
     }}>
       {children}
     </WeatherContext.Provider>

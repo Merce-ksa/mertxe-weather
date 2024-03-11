@@ -9,11 +9,13 @@ import UNITS from '../../constants/units'
 
 function Home () {
   const { coordinates } = useCoordinates()
-  const { weather, getWeather } = useWeather()
+  const { weather, getWeatherByCoords, getWeatherByCityName } = useWeather()
   
   useEffect(() => {
     if (coordinates.length) {
-      getWeather(coordinates, UNITS.METRIC)
+      getWeatherByCoords(coordinates, UNITS.METRIC)
+    } else {
+      getWeatherByCityName('Barcelona', UNITS.METRIC)
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coordinates])

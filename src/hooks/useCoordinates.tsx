@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import {getUserLocation} from '../helpers/getUserLocation'
+import { getUserLocation } from '../helpers/getUserLocation'
 
 function useCoordinates () {
   const [coordinates, setCoordinates] = useState<number[]>([])
@@ -8,7 +8,7 @@ function useCoordinates () {
     getUserLocation().then((longLat: number[]) => setCoordinates(longLat))
   }, [])
   
-  return {coordinates}
+  return { coordinates }
 }
 
 export default useCoordinates
