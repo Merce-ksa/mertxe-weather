@@ -9,7 +9,7 @@ const WEATHER: Weather = {
   temperatureFeelsLike: 20,
   windSpeed: 10,
   windDeg: 200,
-  icon: 'sunny',
+  icon: '11d',
   sunrise: 1709619559,
   sunset: 1709660793
 }

@@ -24,17 +24,16 @@ function customRender(user: WeatherContextType) {
 describe('Given a weather component', ()=> {
   describe('When is rendered', ()=> {
     it('Then the city name to be defined', () => {
-      const user = { weather: WEATHER, getWeather: jest.fn() }
-      customRender(user)
+      const weather = { weather: WEATHER, getWeatherByCoords: jest.fn(), getWeatherByCityName: jest.fn() }
+      customRender(weather)
       expect(screen.getByText(WEATHER.city)).toBeInTheDocument()
     })
 
     it('Then the temperature to be defined', () => {
-      const user = { weather: WEATHER, getWeather: jest.fn() }
-      customRender(user)
-      expect(screen.getByText(WEATHER.city)).toBeInTheDocument()
+      const weather = { weather: WEATHER, getWeatherByCoords: jest.fn(), getWeatherByCityName: jest.fn() }
+      customRender(weather)
     
-      const temperature = screen.getByText(`${WEATHER.temperature.toString()} C`)
+      const temperature = screen.getByText('20.0 ºC')
       
       expect(temperature).toBeInTheDocument()
     })

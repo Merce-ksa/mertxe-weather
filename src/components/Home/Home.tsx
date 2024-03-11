@@ -1,11 +1,9 @@
-import formatterIcons from '../../helpers/formatterIcons'
 import useCoordinates from '../../hooks/useCoordinates'
-import { TbTemperaturePlus, TbTemperatureMinus } from 'react-icons/tb'
-
 import './Home.css'
 import useWeather from '../../hooks/useWeather'
 import { useEffect } from 'react'
 import UNITS from '../../constants/units'
+import Card from '../Card'
 
 function Home () {
   const { coordinates } = useCoordinates()
@@ -22,16 +20,23 @@ function Home () {
   
   return (
     weather && (
-      <div className="container">
-        <h2 className='brand-secondary'>MyWeather</h2>
-        <h3>{weather.city}</h3>
-        {coordinates &&(<p>{`Coordenadas navegador ${coordinates[0]}, ${coordinates[1]}`}</p>)}
-        <p>{`${weather.temperature} C`}</p>
-        <img src={formatterIcons(weather.icon)} alt="weather icon"></img>
-        <p><TbTemperaturePlus /> {`${weather.temperatureMax} C`}</p>
-        <p><TbTemperatureMinus /> {`${weather.temperatureMin} C`}</p>
-        <p>{`${weather.windSpeed} km/h`}</p>
-      </div>
+      <>
+        <h1 className='title'>MyWeather</h1>
+        <Card
+          city = {weather.city}
+          lat = {weather.coordinates[0]}
+          long = {weather.coordinates[1]}
+          temperature = {weather.temperature}
+          temperatureMin = {weather.temperatureMin}
+          temperatureMax = {weather.temperatureMax}
+          temperatureFeelsLike = {weather.temperatureFeelsLike}
+          icon = {weather.icon}
+          windSpeed = {weather.windSpeed}
+          windDeg = {weather.windDeg}
+          sunrise={weather.sunrise}
+          sunset={weather.sunset}
+        />
+      </>
     )
   )
 }
