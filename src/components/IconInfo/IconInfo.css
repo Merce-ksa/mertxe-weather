@@ -1,0 +1,13 @@
+@import url('../../theme/theme.css');
+
+.icon-info {
+    display: flex;
+    align-items: center;
+    background-position: center;
+}
+
+.icon-info p {
+    margin: 0;
+    padding-left: 8px;
+    font-weight: var(--regular);
+}

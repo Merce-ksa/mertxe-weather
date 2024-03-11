@@ -1,43 +1,52 @@
-
-import { ReactNode, createContext, useReducer } from 'react'
-import axios from 'axios'
+import { ReactNode, createContext, useState } from 'react'
 import weatherFactory from '../types/factories/weatherFactory'
+import Weather from '../types/weather'
+import axios from 'axios'
+import BASE_URL from '../constants/url'
 import { APPId } from '../services/APIConfig'
-import initialStateWeather from '../states/weatherState'
-import {weatherReducer, WEATHER_ACTIONS_TYPES} from '../reducers/weatherReducer'
 
-export const WeatherContext = createContext({})
+export interface WeatherContextType {
+  weather: Weather | null
+  getWeatherByCoords: (coordinates: number[], units: string) => void
+  getWeatherByCityName: (cityName: string, units: string) => void
+}
 
-function useWeatherReducer () {
-  const [state, dispatch] = useReducer(weatherReducer, initialStateWeather)
+export const WeatherContext = createContext<WeatherContextType>({} as WeatherContextType)
 
-  const getWeather = async (coordinates: number[], units: string) => {
+export function WeatherProvider ({children}: { children: ReactNode }) {
+  const [weather, setWeather] = useState<Weather | null>(null)
+
+  const getWeatherByCoords = async (coordinates: number[], units: string) => {
     try {
       const [latitude, longitude] = coordinates
-      const {data} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&lang=sp&units=${units}&appid=${APPId}`)
-          
-      const weather = weatherFactory(data)
+
+      const { data } = await axios.get(`${BASE_URL}/weather?lat=${latitude}&lon=${longitude}&lang=sp&units=${units}&appid=${APPId}`)
       
-      dispatch({
-        type: WEATHER_ACTIONS_TYPES.GET_WEATHER,
-        payload: weather
-      })
+      const weatherFormatter = weatherFactory(data)
+      setWeather(weatherFormatter)
+
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const getWeatherByCityName = async (cityName: string, units: string) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/weather?q=${cityName}&units=${units}&appid=${APPId}`)
+      
+      const weatherFormatter = weatherFactory(data)
+      setWeather(weatherFormatter)
 
     } catch (error) {
       console.error(error)
     }
   }
   
-  return {state, getWeather}
-}
-
-export function WeatherProvider ({children}: { children: ReactNode }) {
-  const { state, getWeather } = useWeatherReducer()
-  
   return (
     <WeatherContext.Provider value={{
-      weather: state,
-      getWeather
+      weather,
+      getWeatherByCoords,
+      getWeatherByCityName
     }}>
       {children}
     </WeatherContext.Provider>

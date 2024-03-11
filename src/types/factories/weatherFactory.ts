@@ -1,4 +1,5 @@
 import WeatherResponse from '../WeatherResponse'
+import Weather from '../weather'
 
 export default function weatherFactory(
   weatherResponse: WeatherResponse
@@ -16,18 +17,4 @@ export default function weatherFactory(
     sunrise: weatherResponse.sys.sunrise,
     sunset: weatherResponse.sys.sunset
   }
-}
-
-interface Weather {
-    city: string
-    coordinates: number[]
-    temperature: number
-    temperatureMin: number
-    temperatureMax: number
-    temperatureFeelsLike: number
-    windSpeed: number
-    windDeg: number
-    icon: string
-    sunrise: number
-    sunset: number
 }
