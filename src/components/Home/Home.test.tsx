@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 import { WeatherContext, WeatherContextType} from '../../context/weather'
 import Home from '.'
 import COORDINATES from '../../mocks/coordinatesMock'
-import WEATHER from '../../mocks/WeatherMock'
+import WEATHER from '../../mocks/weatherMock'
 
 jest.mock('../../hooks/useCoordinates', () => ({
   __esModule: true,
