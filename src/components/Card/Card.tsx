@@ -1,4 +1,4 @@
-import formatDate from '../../helpers/formatDate'
+import {formatDateEpochToLocalTime} from '../../helpers/formatDate'
 import formatUrlImage from '../../helpers/formatUrlImage'
 import IconInfo from '../IconInfo'
 import './Card.css'
@@ -26,8 +26,8 @@ function Card ({city, lat, long, temperature, temperatureMin, temperatureMax, te
           <IconInfo icon={<TbTemperatureMinus />} info={`${temperatureMin} ºC`} />
         </div>
         <div>
-          <IconInfo icon={<TbSunrise />} info={formatDate(sunrise)} />
-          <IconInfo icon={<TbSunset />} info={formatDate(sunset)} />
+          <IconInfo icon={<TbSunrise />} info={formatDateEpochToLocalTime(sunrise)} />
+          <IconInfo icon={<TbSunset />} info={formatDateEpochToLocalTime(sunset)} />
         </div>
         <div>
           <IconInfo icon={<WiWindDeg style={{ transform: `rotate(${windDeg}deg)` }} />} info={`${windSpeed} km/h`} />
