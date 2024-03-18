@@ -1,17 +1,11 @@
 @import url('../../theme/theme.css');
 
-.search-wrap {
+.search {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--white);
     border-radius: var(--radius);
-}
-
-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 input {
