@@ -2,7 +2,7 @@
 import {render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { WeatherContext, WeatherContextType} from '../../context/weather'
-import Home from '.'
+import Favorites from '.'
 import COORDINATES from '../../mocks/coordinatesMock'
 import WEATHER from '../../mocks/weatherMock'
 
@@ -16,7 +16,7 @@ jest.mock('../../hooks/useCoordinates', () => ({
 function customRender(user: WeatherContextType) {
   return render(
     <WeatherContext.Provider value={user}>
-      <Home />
+      <Favorites />
     </WeatherContext.Provider>
   )
 }

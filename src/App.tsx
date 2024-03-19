@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import { getPermissionsLocation } from './helpers/getUserLocation'
-import Home from './components/Home'
+
 import Search from './components/Search'
 import Switch from './components/Switch'
+import Favorites from './components/Favorites'
+import Forecast from './components/Forecast'
+import './App.css'
 
 function App() {
   const [themeDark, setThemeDark] = useState<boolean>(false)
@@ -17,14 +19,20 @@ function App() {
   }, [themeDark])
 
   return (
-    <section className='main'>
+    <div className='wrapper'>
       <div className='header-container'>
-        <div></div>
         <Search />
         <Switch themeDark={themeDark} setThemeDark={setThemeDark}/>
       </div>
-      <Home />
-    </section>
+      <div className='main-container'>
+        <aside className='aside-container'>
+          <Favorites />
+        </aside>
+        <main className='main-container'>
+          <Forecast />
+        </main>
+      </div>
+    </div>
 
   )
 }
