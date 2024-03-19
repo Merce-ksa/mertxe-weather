@@ -18,7 +18,7 @@ function App() {
 
   return (
     <section className='main'>
-      <div className='search-container'>
+      <div className='header-container'>
         <div></div>
         <Search />
         <Switch themeDark={themeDark} setThemeDark={setThemeDark}/>

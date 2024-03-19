@@ -32,7 +32,7 @@ button {
   align-items: center;
 }
 
-.search-container {
+.header-container {
   display: flex;
   justify-content: space-between;
   width: 100%;

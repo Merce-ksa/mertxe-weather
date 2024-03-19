@@ -1,4 +1,8 @@
 @import url('../../theme/theme.css');
+.search-container{
+    display: flex;
+    flex-direction: column;
+}
 
 .search {
     display: flex;
@@ -33,3 +37,18 @@ input::placeholder, input:focus {
     padding: 0 6px 0 0;
     background-color: transparent;
 }
+
+.suggestions {
+    margin: 0;
+    padding: 0;
+    top: 40px;
+    background-color: var(--white);
+} 
+
+.suggestions li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: var(--text-primary);
+    cursor: pointer;
+} 
