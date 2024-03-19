@@ -79,6 +79,42 @@ const FORECAST_RESPONSE_MOCK: ForecastResponse = {
       },
       'dt_txt': '2024-03-16 21:00:00'
     },
+    {
+      'dt': 1710622800,
+      'main': {
+        'temp': 17,
+        'feels_like': 16.48,
+        'temp_min': 14.61,
+        'temp_max': 17,
+        'pressure': 1021,
+        'sea_level': 1021,
+        'grnd_level': 1000,
+        'humidity': 66,
+        'temp_kf': 2.39
+      },
+      'weather': [
+        {
+          'id': 803,
+          'main': 'Clouds',
+          'description': 'broken clouds',
+          'icon': '04n'
+        }
+      ],
+      'clouds': {
+        'all': 66
+      },
+      'wind': {
+        'speed': 2.91,
+        'deg': 168,
+        'gust': 3.07
+      },
+      'visibility': 10000,
+      'pop': 0,
+      'sys': {
+        'pod': 'n'
+      },
+      'dt_txt': '2024-03-17 21:00:00'
+    },
   ],
   'city': {
     'id': 3110044,
@@ -103,33 +139,49 @@ describe('Given a forecastFactory function', () => {
         coordinates: [FORECAST_RESPONSE_MOCK.city.coord.lat, FORECAST_RESPONSE_MOCK.city.coord.lon],
         sunrise: FORECAST_RESPONSE_MOCK.city.sunrise,
         sunset: FORECAST_RESPONSE_MOCK.city.sunset,
-        forecastList: [
-          {
-            temperature: 20.29,
-            temperatureFeelsLike: 19.94,
-            icon: '03d',
-            windSpeed: 2.89,
-            windDeg: 133,
-            precipitationProbability: 0,
-            rain: null,
-            snow: null,
-            date: '2024-03-16 18:00:00'
-          },
-          {
-            temperature: 17,
-            temperatureFeelsLike: 16.48,
-            icon: '04n',
-            windSpeed: 2.91,
-            windDeg: 168,
-            precipitationProbability: 0,
-            rain: null,
-            snow: null,
-            date: '2024-03-16 21:00:00'
-          },
-        ],
+        forecastList: {
+          '2024-03-16': [
+            {
+              temperature: 20.29,
+              temperatureFeelsLike: 19.94,
+              windSpeed: 2.89,
+              windDeg: 133,
+              icon: '03d',
+              precipitationProbability: 0,
+              rain: null,
+              snow: null,
+              date: '2024-03-16 18:00:00'
+            },
+            {
+              temperature: 17,
+              temperatureFeelsLike: 16.48,
+              windSpeed: 2.91,
+              windDeg: 168,
+              icon: '04n',
+              precipitationProbability: 0,
+              rain: null,
+              snow: null,
+              date: '2024-03-16 21:00:00'
+            }
+          ],
+          '2024-03-17': [
+            {
+              temperature: 17,
+              temperatureFeelsLike: 16.48,
+              windSpeed: 2.91,
+              windDeg: 168,
+              icon: '04n',
+              precipitationProbability: 0,
+              rain: null,
+              snow: null,
+              date: '2024-03-17 21:00:00'
+            }
+          ]
+        }
       }
-            
+
       expect(forecastFactory(FORECAST_RESPONSE_MOCK)).toEqual(expected)
+      
     })
   })
 })
