@@ -8,7 +8,7 @@ import Card from '../Card'
 function Home () {
   const { coordinates } = useCoordinates()
   const { weather, getWeatherByCoords, getWeatherByCityName } = useWeather()
-  
+
   useEffect(() => {
     if (coordinates.length) {
       getWeatherByCoords(coordinates, UNITS.METRIC)

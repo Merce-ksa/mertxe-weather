@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { getPermissionsLocation } from './helpers/getUserLocation'
 import Home from './components/Home'
+import Search from './components/Search'
+import Switch from './components/Switch'
 
 function App() {
   const [themeDark, setThemeDark] = useState<boolean>(false)
@@ -16,6 +18,11 @@ function App() {
 
   return (
     <section className='main'>
+      <div className='search-container'>
+        <div></div>
+        <Search />
+        <Switch themeDark={themeDark} setThemeDark={setThemeDark}/>
+      </div>
       <Home />
     </section>
 
