@@ -33,9 +33,11 @@ describe('Given a weather component', ()=> {
       const weather = { weather: WEATHER, getWeatherByCoords: jest.fn(), getWeatherByCityName: jest.fn() }
       customRender(weather)
     
-      const temperature = screen.getByText('20.0 ºC')
-      
-      expect(temperature).toBeInTheDocument()
+      const temperature = screen.getByText(/^20.0/)
+        
+      expect(temperature).toHaveTextContent(
+        '20.0º',
+      )
     })
   })
 })
