@@ -1,7 +1,12 @@
 import formatUrlImage from '../../helpers/formatUrlImage'
 import './SmallCard.css'
 
-function SmallCard ({city, temperature, temperatureMin, temperatureMax, icon}: SmallCardProps) {
+function SmallCard ({
+  city, 
+  temperature, 
+  temperatureMin, 
+  temperatureMax, 
+  icon}: SmallCardProps) {
  
   return (
     <div className="small-card-container">
@@ -15,7 +20,7 @@ function SmallCard ({city, temperature, temperatureMin, temperatureMax, icon}: S
   )
 }
 
-interface SmallCardProps {
+export interface SmallCardProps {
     city: string
     temperature: number
     temperatureMin: number
