@@ -1,0 +1,67 @@
+@import url('../../theme/theme.css');
+
+/* El wrapper del componente TAB */
+.react-tabs {
+    width: 740px;
+    -webkit-tap-highlight-color: transparent;
+}
+/* El div que envuelve a todas las Tabs superiores, el TABLIST */
+.react-tabs__tab-list {
+    margin: 0 0 10px;
+    padding: 0;
+}
+/* Cada una de las Tabs superiores del TABLIST */
+.react-tabs__tab {
+    display: inline-block;
+    border: 1px solid transparent;
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+  /* El Tab seleccionado del TABLIST */
+.react-tabs__tab--selected {
+    background: var(--white);
+    color: var(--text-primary);
+    border-radius: 5px 5px 0 0;
+
+    box-shadow: 0px -14px 15px -3px rgba(0,0,0,0.1);
+}
+
+.react-tabs__tab:focus {
+    outline: none;
+}
+    /* la línea inferior del tab cuando está soleccionado del TABLIST */
+.react-tabs__tab:focus:after {
+    content: '';
+    position: absolute;
+    height: 5px;
+    left: -4px;
+    right: -4px;
+    bottom: -5px;
+    background: var(--white);
+}
+  
+.react-tabs__tab-panel {
+    display: block;
+}
+  
+.react-tabs__tab-panel--selected {
+    display: flex;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.forecast-item {
+    min-width: 112px;
+    height: 200px;
+    margin: 0px 4px;
+    padding: 10px;
+    text-align: center;
+}
+
+.forecast-icon {
+    width: 48px;
+}
