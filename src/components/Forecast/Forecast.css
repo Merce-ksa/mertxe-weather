@@ -1,0 +1,70 @@
+@import url('../../theme/theme.css');
+
+.react-tabs {
+    -webkit-tap-highlight-color: transparent;
+    border-radius: var(--radius);
+}
+
+.react-tabs__tab-list {
+    margin: 0;
+    padding: 0;
+}
+
+.react-tabs__tab {
+    display: inline-block;
+    border: 1px solid transparent;
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: #5189ce;
+}
+
+.react-tabs__tab--selected {
+    color: var(--white);
+    border-radius: 5px 5px 0 0;
+    background-color: rgba(27, 85, 162, 0.5);
+}
+
+.react-tabs__tab:focus {
+    outline: none;
+}
+    
+.react-tabs__tab:focus:after {
+    content: '';
+    position: absolute;
+    height: 5px;
+    left: -4px;
+    right: -4px;
+    bottom: -5px;
+}
+  
+.react-tabs__tab-panel {
+    display: block;
+}
+  
+.react-tabs__tab-panel--selected {
+    display: flex;
+    overflow-x: scroll;
+    white-space: nowrap;
+    background-color: rgba(27, 85, 162, 0.5);
+    border-radius: 0 var(--radius) var(--radius) var(--radius);
+}
+
+.forecast-item {
+    min-width: 112px;
+    height: 200px;
+    margin: 0px 4px;
+    padding: 10px;
+    text-align: center;
+}
+
+.forecast-icon {
+    width: 48px;
+}
+
+.forecast-time {
+ color: var(--white);
+}

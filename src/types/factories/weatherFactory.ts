@@ -15,6 +15,8 @@ export default function weatherFactory(
     windDeg: weatherResponse.wind.deg,
     icon: weatherResponse.weather[0].icon,
     sunrise: weatherResponse.sys.sunrise,
-    sunset: weatherResponse.sys.sunset
+    sunset: weatherResponse.sys.sunset,
+    pressure: weatherResponse.main.pressure,
+    humidity: weatherResponse.main.humidity
   }
 }

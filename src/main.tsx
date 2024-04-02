@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ForecastProvider>
       <WeatherProvider>
         <App />
-      </WeatherProvider>,
-    </ForecastProvider>,
-  </React.StrictMode>, 
+      </WeatherProvider>
+    </ForecastProvider>
+  </React.StrictMode>
 )

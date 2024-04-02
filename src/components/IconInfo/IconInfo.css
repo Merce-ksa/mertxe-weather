@@ -4,10 +4,14 @@
     display: flex;
     align-items: center;
     background-position: center;
+    color: #5189ce;
+    font-size: 20px;
 }
 
 .icon-info p {
     margin: 0;
     padding-left: 8px;
-    font-weight: var(--regular);
+    font-weight: var(--bold);
+    color: #5189ce;
+    font-size: 18px;
 }

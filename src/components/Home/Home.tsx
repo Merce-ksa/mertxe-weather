@@ -1,43 +1,49 @@
-import useCoordinates from '../../hooks/useCoordinates'
-import './Home.css'
+
 import useWeather from '../../hooks/useWeather'
-import { useEffect } from 'react'
-import UNITS from '../../constants/units'
-import Card from '../Card'
+import useForecast from '../../hooks/useForecast'
+
+import Favorites from '../Favorites'
+import CurrentWeather from '../CurrentWeather'
+import Weather from '../Weather'
+import './Home.css'
 
 function Home () {
-  const { coordinates } = useCoordinates()
-  const { weather, getWeatherByCoords, getWeatherByCityName } = useWeather()
+  const { weather } = useWeather()
+  const { forecast } = useForecast()
 
-  useEffect(() => {
-    if (coordinates.length) {
-      getWeatherByCoords(coordinates, UNITS.METRIC)
-    } else {
-      getWeatherByCityName('Barcelona', UNITS.METRIC)
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [coordinates])
-  
   return (
-    weather && (
-      <>
-        <h1 className='title'>MyWeather</h1>
-        <Card
-          city = {weather.city}
-          lat = {weather.coordinates[0]}
-          long = {weather.coordinates[1]}
-          temperature = {weather.temperature}
-          temperatureMin = {weather.temperatureMin}
-          temperatureMax = {weather.temperatureMax}
-          temperatureFeelsLike = {weather.temperatureFeelsLike}
-          icon = {weather.icon}
-          windSpeed = {weather.windSpeed}
-          windDeg = {weather.windDeg}
-          sunrise={weather.sunrise}
-          sunset={weather.sunset}
-        />
-      </>
-    )
+    <div>
+      <div className='aside-main-container'>
+        <aside className='aside-container'>
+          <Favorites />
+        </aside>
+        <main>
+          {weather && (
+            <>
+              <CurrentWeather 
+                city={weather.city}
+                temperature={weather.temperature}
+                coordinates={weather.coordinates}
+                icon={weather.icon} />
+              {forecast && (
+                <Weather
+                  forecast={ forecast.forecastList}
+                  temperatureFeelsLike={ weather.temperatureFeelsLike }
+                  windDeg={ weather.windDeg } 
+                  windSpeed={ weather.windSpeed } 
+                  humidity={ weather.humidity } 
+                  pressure={ weather.pressure } 
+                  temperatureMin={ weather.temperatureMin } 
+                  temperatureMax={ weather.temperatureMax } 
+                  sunrise={ weather.sunrise } 
+                  sunset={ weather.sunset }
+                />
+              )}
+            </>
+          )}
+        </main>
+      </div>
+    </div>
   )
 }
 

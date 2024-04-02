@@ -1,1 +1,19 @@
 @import url('../../theme/theme.css');
+
+.aside-main-container {
+  display: flex;
+  height: 100%;
+}
+  
+.aside-container {
+  min-width: 260px; 
+  min-height: 900px;
+  background: #144e8b;
+}
+  
+main {
+  width: 100%;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+}

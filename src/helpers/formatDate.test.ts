@@ -1,5 +1,5 @@
 import WEATHER from '../mocks/weatherMock'
-import { formatDateEpochToLocalTime, formatDateToJSON} from './formatDate'
+import { formatDateEpochToLocalTime, formatDateToDayMonth, formatDateToJSON} from './formatDate'
 
 describe('Given a formatDateEpochToLocalTime function', () => {
   describe('When it is invoked', () => {
@@ -20,10 +20,22 @@ describe('Given a formatDateToJSON function', () => {
       const MM = dateObject.getMonth() + 1
       const DD = dateObject.getDate()
 
+      const formatDD = DD.toString().length === 1 ? `0${DD}` : DD.toString()
       const formatMM = MM.toString().length === 1 ? `0${MM}` : MM.toString()
-      const expected = `${YYYY}-${formatMM}-${DD}`
+      const expected = `${YYYY}-${formatMM}-${formatDD}`
 
       expect(formatDateToJSON(dateObject)).toBe(expected)
+    })
+  })
+})
+
+describe('Given a formatDateToDayMonth function', () => {
+  describe('When it is invoked', () => {
+    it('Then should return a date in format DD-MM', () => {
+      const forecastDate = '2024-03-16'
+      const expected = '16-03'
+
+      expect(formatDateToDayMonth(forecastDate)).toBe(expected)
     })
   })
 })
