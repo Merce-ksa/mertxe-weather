@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import IconInfo from '../IconInfo'
+import IconText from '../IconText'
 import { formatDateEpochToLocalTime } from '../../helpers/formatDate'
 
 import { TbTemperatureMinus, TbTemperaturePlus, TbTemperature, TbSunHigh, TbSunrise, TbSunset } from 'react-icons/tb'
@@ -61,19 +61,19 @@ function Weather ({
           <Forecast forecastList={forecast} />
         </div>
         <div className='weather-temp-feels-like weather-item'>
-          <IconInfo icon={<TbTemperature />} info={'Sensación'} />
+          <IconText icon={<TbTemperature />} info={'Sensación'} isTitle={true} />
           <p className='weather-text'>{`${temperatureFeelsLike.toFixed(1)} ºC`}</p>
         </div>
         <div className='weather-temp-max weather-item'>
-          <IconInfo icon={<TbTemperaturePlus />} info={'Temp. máxima'} />
+          <IconText icon={<TbTemperaturePlus />} info={'Temp. máxima'} isTitle={true} />
           <p className='weather-text'>{`${temperatureMax.toFixed(1)} ºC`}</p>
         </div>
         <div className='weather-temp-min weather-item'>
-          <IconInfo icon={<TbTemperatureMinus />} info={'Temp. mínima'} />
+          <IconText icon={<TbTemperatureMinus />} info={'Temp. mínima'} isTitle={true} />
           <p className='weather-text'>{`${temperatureMin.toFixed(1)} ºC`}</p>
         </div>
         <div className='weather-sunrise-sunset weather-item'>
-          <IconInfo icon={<TbSunHigh />} info={'Amanecer y atardecer'} />
+          <IconText icon={<TbSunHigh />} info={'Amanecer y atardecer'} isTitle={true} />
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" width='400'>
             <defs>
               <linearGradient id="gradient">
@@ -118,7 +118,7 @@ function Weather ({
           </svg>
         </div>
         <div className='weather-pressure weather-item'>
-          <IconInfo icon={<WiBarometer />} info={'Presión'} />
+          <IconText icon={<WiBarometer />} info={'Presión'} isTitle={true} />
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" width='400'>
             <defs>
               <linearGradient id="gradientPress">
@@ -152,11 +152,11 @@ function Weather ({
           </svg>
         </div>
         <div className='weather-humidity weather-item'>
-          <IconInfo icon={<WiHumidity />} info={'Humedad'} />
+          <IconText icon={<WiHumidity />} info={'Humedad'} isTitle={true} />
           <p className='weather-text'>{`${humidity.toFixed(1)} %`}</p>
         </div>
         <div className='weather-wind-wrapper weather-item'>
-          <IconInfo icon={<BsWind />} info={'Viento'} />
+          <IconText icon={<BsWind />} info={'Viento'} isTitle={true} />
           <div className='weather-wind'>
             <p className='weather-text'>{`${windSpeed.toFixed(1)} km/h`}</p>
             <p className='forecast-wind-rotate'>

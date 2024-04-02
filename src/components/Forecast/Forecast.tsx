@@ -2,7 +2,7 @@ import { WiRaindrop } from 'react-icons/wi'
 import { BsWind, BsUmbrella, BsThermometerHalf } from 'react-icons/bs'
 import { IoIosSnow } from 'react-icons/io'
 import formatUrlImage from '../../helpers/formatUrlImage'
-import IconInfo from '../IconInfo'
+import IconText from '../IconText'
 import './Forecast.css'
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 import { WeatherForecastItem } from '../../types/forecast'
@@ -32,11 +32,11 @@ function Forecast ({forecastList}: ForecastProps) {
             <div key={`${item.date}-${index}`} className='forecast-item'>
               <p className='forecast-time'>{`${item.date.split(' ')[1].split(':')[0]} h`}</p>
               <img src={formatUrlImage(item.icon)} alt="icon resum weather" className='forecast-icon' />  
-              <IconInfo icon={<BsThermometerHalf />} info={`${item.temperature.toFixed(1)} ºC`} />
-              <IconInfo icon={<BsWind />} info={`${item.windSpeed} km/h`} />
-              <IconInfo icon={<BsUmbrella />} info={`${item.precipitationProbability * 100} %`} />
-              {item.rain &&<IconInfo icon={<WiRaindrop />} info={`${item.rain} mm`} />}
-              {item.snow &&<IconInfo icon={<IoIosSnow />} info={`${item.snow} mm`} />}
+              <IconText icon={<BsThermometerHalf />} info={`${item.temperature.toFixed(1)} ºC`} />
+              <IconText icon={<BsWind />} info={`${item.windSpeed} km/h`} />
+              <IconText icon={<BsUmbrella />} info={`${item.precipitationProbability * 100} %`} />
+              {item.rain &&<IconText icon={<WiRaindrop />} info={`${item.rain} mm`} />}
+              {item.snow &&<IconText icon={<IoIosSnow />} info={`${item.snow} mm`} />}
             </div>
           ))}
 

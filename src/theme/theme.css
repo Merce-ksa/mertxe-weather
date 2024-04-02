@@ -2,18 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
 :root {
-  --primary: #f15d45;
-  --secondary: #78CBBF;
-  --detail: #48484a;
+  --primary: rgb(241, 93, 69);
+  --secondary: rgb(120, 203, 191);
+  --detail: rgb(72, 72, 74);
 
-  --background: #f2f2f2;
+  --background: rgb(242, 242, 242);
 
-  --text-primary: #242424;
+  --text-primary: rgb(36, 36, 36);
+  --text-title: rgb(81, 137, 206);;
 
-  --button: #303035;
-  --text-disabled: #757575;
+  --button: rgb(48, 48, 53);
+  --text-disabled: rgb(117, 117, 117);
 
-  --white: #ffff;
+  --white: rgb(255, 255, 255);
 
   --font: 'Quicksand', sans-serif;
   --font-secondary: 'Roboto Mono', monospace;
