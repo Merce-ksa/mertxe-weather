@@ -11,6 +11,8 @@ interface Weather {
     icon: string
     sunrise: number
     sunset: number
+    pressure: number
+    humidity: number,
 }
 
 export default Weather

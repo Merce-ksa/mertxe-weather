@@ -11,7 +11,9 @@ const WEATHER: Weather = {
   windDeg: 200,
   icon: '11d',
   sunrise: 1709619559,
-  sunset: 1709660793
+  sunset: 1709660793,
+  pressure: 1019,
+  humidity: 43
 }
 
 export default WEATHER

@@ -15,7 +15,9 @@ describe('Given a weatherFactory function', () => {
         windDeg: WEATHER_RESPONSE_MOCK.wind.deg,
         icon: WEATHER_RESPONSE_MOCK.weather[0].icon,
         sunrise: WEATHER_RESPONSE_MOCK.sys.sunrise,
-        sunset: WEATHER_RESPONSE_MOCK.sys.sunset
+        sunset: WEATHER_RESPONSE_MOCK.sys.sunset,
+        pressure: WEATHER_RESPONSE_MOCK.main.pressure,
+        humidity: WEATHER_RESPONSE_MOCK.main.humidity
       }
       const weatherResponse = WEATHER_RESPONSE_MOCK
             

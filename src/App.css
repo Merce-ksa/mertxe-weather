@@ -7,16 +7,15 @@ body {
   font-family: var(--font);
   font-weight: var(--light);
   color: var(--text-primary);
-  
-  background-color: var(--background);
-  
+
+  background: linear-gradient(177deg, rgba(21,80,153,1) 0%, rgba(45,110,179,1) 39%, rgba(95,147,205,1) 60%, rgba(135,177,223,1) 100%);
   transition: all .5s ease-in-out;
+  overflow-x: hidden;
 }
 
 #root {
   margin: 0;
   padding: 0;
-  height: 100vh;
 }
 
 h1 {
@@ -35,26 +34,9 @@ button {
 }
 
 .header-container {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  width: 100%;
   padding: 10px 0px;
   background: var(--detail);
-}
-
-.main-container {
-  display: flex;
-  height: 100%;
-}
-
-.aside-container {
-  width: 30%; 
-  height: 100%;
-}
-
-main {
-  width: 100%;
-  /* display: flex; */
-  /* flex-direction: column; */
-  background-color: var(--white);
 }

@@ -1,16 +1,15 @@
 @import url('../../theme/theme.css');
 
-/* El wrapper del componente TAB */
 .react-tabs {
-    width: 740px;
     -webkit-tap-highlight-color: transparent;
+    border-radius: var(--radius);
 }
-/* El div que envuelve a todas las Tabs superiores, el TABLIST */
+
 .react-tabs__tab-list {
-    margin: 0 0 10px;
+    margin: 0;
     padding: 0;
 }
-/* Cada una de las Tabs superiores del TABLIST */
+
 .react-tabs__tab {
     display: inline-block;
     border: 1px solid transparent;
@@ -20,20 +19,19 @@
     list-style: none;
     padding: 6px 12px;
     cursor: pointer;
+    color: #5189ce;
 }
-  /* El Tab seleccionado del TABLIST */
-.react-tabs__tab--selected {
-    background: var(--white);
-    color: var(--text-primary);
-    border-radius: 5px 5px 0 0;
 
-    box-shadow: 0px -14px 15px -3px rgba(0,0,0,0.1);
+.react-tabs__tab--selected {
+    color: var(--white);
+    border-radius: 5px 5px 0 0;
+    background-color: rgba(27, 85, 162, 0.5);
 }
 
 .react-tabs__tab:focus {
     outline: none;
 }
-    /* la línea inferior del tab cuando está soleccionado del TABLIST */
+    
 .react-tabs__tab:focus:after {
     content: '';
     position: absolute;
@@ -41,7 +39,6 @@
     left: -4px;
     right: -4px;
     bottom: -5px;
-    background: var(--white);
 }
   
 .react-tabs__tab-panel {
@@ -52,6 +49,8 @@
     display: flex;
     overflow-x: scroll;
     white-space: nowrap;
+    background-color: rgba(27, 85, 162, 0.5);
+    border-radius: 0 var(--radius) var(--radius) var(--radius);
 }
 
 .forecast-item {
@@ -64,4 +63,8 @@
 
 .forecast-icon {
     width: 48px;
+}
+
+.forecast-time {
+ color: var(--white);
 }
