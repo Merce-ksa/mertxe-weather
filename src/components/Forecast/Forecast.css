@@ -19,13 +19,14 @@
     list-style: none;
     padding: 6px 12px;
     cursor: pointer;
-    color: #5189ce;
+    color: var(--text-title);
 }
 
 .react-tabs__tab--selected {
     color: var(--white);
     border-radius: 5px 5px 0 0;
-    background-color: rgba(27, 85, 162, 0.5);
+    background-color: rgba(36, 113, 182, 0.5);
+    box-shadow: 0px -10px 25px 0px rgba(0,0,0,0.1);
 }
 
 .react-tabs__tab:focus {
@@ -49,7 +50,7 @@
     display: flex;
     overflow-x: scroll;
     white-space: nowrap;
-    background-color: rgba(27, 85, 162, 0.5);
+    background-color: rgba(36, 113, 182, 0.5);
     border-radius: 0 var(--radius) var(--radius) var(--radius);
 }
 
