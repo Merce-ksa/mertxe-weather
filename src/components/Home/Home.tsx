@@ -1,6 +1,5 @@
 
 import useWeather from '../../hooks/useWeather'
-import useForecast from '../../hooks/useForecast'
 
 import Favorites from '../Favorites'
 import CurrentWeather from '../CurrentWeather'
@@ -8,8 +7,7 @@ import Weather from '../Weather'
 import './Home.css'
 
 function Home () {
-  const { weather } = useWeather()
-  const { forecast } = useForecast()
+  const { weather, forecast } = useWeather()
 
   return (
     <div>

@@ -5,6 +5,7 @@ import Home from './components/Home'
 import Search from './components/Search'
 import Switch from './components/Switch'
 import './App.css'
+import { SuggestionsProvider } from './context/suggestions'
 
 function App() {
   const [themeDark, setThemeDark] = useState<boolean>(false)
@@ -20,7 +21,9 @@ function App() {
   return (
     <div className='wrapper'>
       <div className='header-container'>
-        <Search />
+        <SuggestionsProvider>
+          <Search />
+        </SuggestionsProvider>
         <Switch themeDark={themeDark} setThemeDark={setThemeDark}/>
       </div>
       <Home />

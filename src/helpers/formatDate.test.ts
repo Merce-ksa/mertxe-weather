@@ -18,8 +18,8 @@ describe('Given a formatDateToJSON function', () => {
       const dateObject = new Date()
       const YYYY = dateObject.getFullYear()
       const MM = dateObject.getMonth() + 1
-      const DD = dateObject.getDate()
-
+      const DD = dateObject.getDay()
+      
       const formatDD = DD.toString().length === 1 ? `0${DD}` : DD.toString()
       const formatMM = MM.toString().length === 1 ? `0${MM}` : MM.toString()
       const expected = `${YYYY}-${formatMM}-${formatDD}`

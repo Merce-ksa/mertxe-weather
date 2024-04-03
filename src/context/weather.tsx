@@ -1,20 +1,25 @@
 import { ReactNode, createContext, useState } from 'react'
+import forecastFactory from '../types/factories/forecastFactory'
 import weatherFactory from '../types/factories/weatherFactory'
 import Weather from '../types/weather'
+import { WeatherForecast } from '../types/forecast'
 import axios from 'axios'
 import BASE_URL from '../constants/url'
 import { APPId } from '../services/APIConfig'
 
 export interface WeatherContextType {
   weather: Weather | null
+  forecast: WeatherForecast | null
   getWeatherByCoords: (coordinates: number[], units: string) => void
   getWeatherByCityName: (cityName: string, units: string) => void
+  getForecastByCityName: (cityName: string, units: string) => void
 }
 
 export const WeatherContext = createContext<WeatherContextType>({} as WeatherContextType)
 
 export function WeatherProvider ({children}: { children: ReactNode }) {
   const [weather, setWeather] = useState<Weather | null>(null)
+  const [forecast, setForecast] = useState<WeatherForecast | null>(null)
 
   const getWeatherByCoords = async (coordinates: number[], units: string) => {
     try {
@@ -41,12 +46,27 @@ export function WeatherProvider ({children}: { children: ReactNode }) {
       console.error(error)
     }
   }
+
+  const getForecastByCityName = async (cityName: string, units: string) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/forecast?q=${cityName}&units=${units}&appid=${APPId}`)
+      
+      const forecastFormatter = forecastFactory(data)
+      setForecast(forecastFormatter)
+
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  
   
   return (
     <WeatherContext.Provider value={{
       weather,
+      forecast,
       getWeatherByCoords,
-      getWeatherByCityName
+      getWeatherByCityName,
+      getForecastByCityName
     }}>
       {children}
     </WeatherContext.Provider>

@@ -13,13 +13,13 @@
 
 .icon-text-primary {
     color: var(--text-title);
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .icon-text-primary p {   
     font-weight: var(--bold);
     color: var(--text-title);
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .icon-text-secondary {
