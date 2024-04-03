@@ -5,6 +5,7 @@ import { WeatherContext, WeatherContextType} from '../../context/weather'
 import Favorites from '.'
 import COORDINATES from '../../mocks/coordinatesMock'
 import WEATHER from '../../mocks/weatherMock'
+import FORECAST from '../../mocks/forecastMock'
 
 jest.mock('../../hooks/useCoordinates', () => ({
   __esModule: true,
@@ -12,6 +13,8 @@ jest.mock('../../hooks/useCoordinates', () => ({
     coordinates: COORDINATES,
   })),
 }))
+
+const weather = { weather: WEATHER, forecast: FORECAST, getWeatherByCoords: jest.fn(), getWeatherByCityName: jest.fn(), getForecastByCityName: jest.fn() }
 
 function customRender(user: WeatherContextType) {
   return render(
@@ -24,13 +27,11 @@ function customRender(user: WeatherContextType) {
 describe('Given a weather component', ()=> {
   describe('When is rendered', ()=> {
     it('Then the city name to be defined', () => {
-      const weather = { weather: WEATHER, getWeatherByCoords: jest.fn(), getWeatherByCityName: jest.fn() }
       customRender(weather)
       expect(screen.getByText(WEATHER.city)).toBeInTheDocument()
     })
 
     it('Then the temperature to be defined', () => {
-      const weather = { weather: WEATHER, getWeatherByCoords: jest.fn(), getWeatherByCityName: jest.fn() }
       customRender(weather)
     
       const temperature = screen.getByText(/^20.0/)
