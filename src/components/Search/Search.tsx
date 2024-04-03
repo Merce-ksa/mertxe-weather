@@ -1,12 +1,14 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import './Search.css'
 import { BsSearch } from 'react-icons/bs'
-import useForecast from '../../hooks/useForecast'
 import UNITS from '../../constants/units'
 import SuggestionsCityNames from '../../types/SuggestionsCityNames'
+import useWeather from '../../hooks/useWeather'
+import useSuggestions from '../../hooks/useSuggestions'
 
 function Search () {
-  const { suggestionsCityNames, getSuggestionsCityNames, getForecastByCityName } = useForecast()
+  const { suggestionsCityNames, getSuggestionsCityNames } = useSuggestions()
+  const { getForecastByCityName, getWeatherByCityName } = useWeather()
   const [query, setQuery] = useState('')
   const [suggestions, setSuggestions] = useState<SuggestionsCityNames[]>([])
   const [selectedSuggestion, setSelectedSuggestion] = useState<boolean>(false)
@@ -40,9 +42,9 @@ function Search () {
     event?.preventDefault()
     const locationFormatter = query.toLowerCase()
     getForecastByCityName(locationFormatter, UNITS.METRIC)
+    getWeatherByCityName(locationFormatter, UNITS.METRIC)
     setQuery('')
     setSelectedSuggestion(false)
-    
   }
 
   return (
