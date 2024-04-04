@@ -8,12 +8,20 @@
 .aside-container {
   min-width: 260px; 
   min-height: 900px;
-  background: #144e8b;
+  background: var(--card-background);
 }
-  
+
 main {
   width: 100%;
   display: flex; 
   flex-direction: column;
   align-items: center;
+}
+
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 0px;
+  position: relative;
 }

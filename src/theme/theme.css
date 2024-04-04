@@ -8,13 +8,19 @@
 
   --background: rgb(242, 242, 242);
 
-  --text-primary: rgb(36, 36, 36);
+  --card-background: rgb(20, 78, 139);
+  --card-background-opacity: rgba(20, 78, 139, 0.4);
+
+  /* --text-primary: rgb(36, 36, 36); */
+  --text-primary: rgb(255, 255, 255);
   --text-title: rgb(110, 173, 232);
+  --text-disabled: rgb(184, 182, 182);
 
   --button: rgb(48, 48, 53);
-  --text-disabled: rgb(117, 117, 117);
+  --input: rgb(42, 100, 163);
 
   --white: rgb(255, 255, 255);
+  --transparent: transparent;
 
   --font: 'Quicksand', sans-serif;
   --font-secondary: 'Roboto Mono', monospace;
@@ -33,5 +39,5 @@
 [data-theme='dark'] {
   --background: #242424;
 
-  --text-primary: #f2f2f2;
+  --text-primary: coral;
 }

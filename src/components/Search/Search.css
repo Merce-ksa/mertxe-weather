@@ -5,50 +5,65 @@
 }
 
 .search {
+    width: 600px;
+    height: 30px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-color: var(--white);
     border-radius: var(--radius);
+    background: var(--input);
 }
 
 input {
-    width: 350px;
-    margin: 2px 4px 2px 4px;
+    width: 95%;
+    margin: 0;
     padding: 4px;
     outline: none;
     border: none;
+    background: var(--transparent);
     font-family: var(--font);
+    font-size: 16px;
 }
 
-input::placeholder, input:focus {
-    font-size: 16px;
+input::placeholder {
+    color: var(--text-title);
+    background: var(--transparent);
+}
+
+input, input:focus {
+    color: var(--text-primary);
+    background: var(--transparent);
 }
 
 .search-icon {
     margin: 0;
     padding: 0;
+    color: var(--text-primary)
 }
 
 .submit-location {
+    width: 5%;
     display: flex;
     justify-content: center;
     margin: 0;
-    padding: 0 6px 0 0;
-    background-color: transparent;
+    padding: 0;
+    background-color: var(--transparent);
 }
 
 .suggestions {
+    width: 600px;
+    position: absolute;
+    top: 40px;
     margin: 0;
     padding: 0;
-    top: 40px;
-    background-color: var(--white);
+    background-color: var(--input);
 } 
 
 .suggestions li {
-    list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 4px;
+    list-style: none;
     color: var(--text-primary);
     cursor: pointer;
 } 

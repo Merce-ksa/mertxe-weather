@@ -1,13 +1,23 @@
 
+import { useEffect, useState } from 'react'
 import useWeather from '../../hooks/useWeather'
+import { SuggestionsProvider } from '../../context/suggestions'
 
-import Favorites from '../Favorites'
 import CurrentWeather from '../CurrentWeather'
 import Weather from '../Weather'
+import Favorites from '../Favorites'
+import Search from '../Search'
+import Switch from '../Switch'
 import './Home.css'
 
 function Home () {
+  const [themeDark, setThemeDark] = useState<boolean>(false)
   const { weather, forecast } = useWeather()
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', themeDark ? 'dark': 'light')
+  }, [themeDark])
+  
 
   return (
     <div>
@@ -16,6 +26,12 @@ function Home () {
           <Favorites />
         </aside>
         <main>
+          <div className='header-container'>
+            <SuggestionsProvider>
+              <Search />
+            </SuggestionsProvider>
+            <Switch themeDark={themeDark} setThemeDark={setThemeDark}/>
+          </div>
           {weather && (
             <>
               <CurrentWeather 
