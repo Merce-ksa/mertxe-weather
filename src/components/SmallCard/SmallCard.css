@@ -2,8 +2,9 @@
 
 .small-card-container {
     padding: 8px;
-    background: var(--white);
+    /* background: var(--white); */
     border-radius: var(--radius);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .city-name {
@@ -11,6 +12,7 @@
     padding: 0;
     font-size: 18px;
     font-weight: var(--bold);
+    color: var(--text-primary);
 }
 
 .icon-weather {
@@ -27,9 +29,11 @@
 .small-card-temperature {
     margin: 0;
     font-size: 24px;
+    color: var(--text-title);
 }
 
 .minMax-temperature {
-    font-size: 14px;
     margin: 0;
+    font-size: 14px;
+    color: var(--text-title);
 }

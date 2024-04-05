@@ -11,6 +11,7 @@ export interface WeatherContextType {
   weather: Weather | null
   forecast: WeatherForecast | null
   getWeatherByCoords: (coordinates: number[], units: string) => void
+  getForecastByCoords: (coordinates: number[], units: string) => void
   getWeatherByCityName: (cityName: string, units: string) => void
   getForecastByCityName: (cityName: string, units: string) => void
 }
@@ -58,6 +59,20 @@ export function WeatherProvider ({children}: { children: ReactNode }) {
       console.error(error)
     }
   }
+
+  const getForecastByCoords = async (coordinates: number[], units: string) => {
+    try {
+      const [latitude, longitude] = coordinates
+
+      const { data } = await axios.get(`${BASE_URL}/forecast?lat=${latitude}&lon=${longitude}&lang=sp&units=${units}&appid=${APPId}`)
+      
+      const forecastFormatter = forecastFactory(data)
+      setForecast(forecastFormatter)
+
+    } catch (error) {
+      console.error(error)
+    }
+  }
   
   
   return (
@@ -65,6 +80,7 @@ export function WeatherProvider ({children}: { children: ReactNode }) {
       weather,
       forecast,
       getWeatherByCoords,
+      getForecastByCoords,
       getWeatherByCityName,
       getForecastByCityName
     }}>

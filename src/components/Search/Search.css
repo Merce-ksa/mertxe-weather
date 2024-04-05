@@ -1,4 +1,5 @@
 @import url('../../theme/theme.css');
+
 .search-container{
     display: flex;
     flex-direction: column;
@@ -55,6 +56,7 @@ input, input:focus {
     width: 600px;
     position: absolute;
     top: 40px;
+    z-index: 2;
     margin: 0;
     padding: 0;
     background-color: var(--input);
