@@ -1,37 +1,31 @@
-import { useEffect } from 'react'
-import useCoordinates from '../../hooks/useCoordinates'
-import useWeather from '../../hooks/useWeather'
+import Favorite from '../../types/Favorite'
 import SmallCard from '../SmallCard'
-import UNITS from '../../constants/units'
+
 import './Favorites.css'
 
-function Favorites () {
-  const { coordinates } = useCoordinates()
-  const { weather, getWeatherByCoords, getWeatherByCityName } = useWeather()
-
-  useEffect(() => {
-    if (coordinates.length) {
-      getWeatherByCoords(coordinates, UNITS.METRIC)
-    } else {
-      getWeatherByCityName('Barcelona', UNITS.METRIC)
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [coordinates])
-  
+function Favorites ({ favorites }: FavoritesProps) {
   return (
-    weather && (
+    favorites && (
       <div className='favorites-container'>
         <h1 className='title'>MyWeather</h1>
-        <SmallCard
-          city = {weather.city}
-          temperature = {weather.temperature}
-          temperatureMin = {weather.temperatureMin}
-          temperatureMax = {weather.temperatureMax}
-          icon = {weather.icon}
-        />
+        {favorites && favorites.map((favorite: Favorite, index: number) => (
+          <div key={`${favorite.city}-${index}`} className='favorites-smallCard-container'>
+            <SmallCard
+              city = {favorite.city}
+              temperature = {favorite.temperature}
+              temperatureMin = {favorite.temperatureMin}
+              temperatureMax = {favorite.temperatureMax}
+              icon = {favorite.weatherIcon}
+            />
+          </div>
+        ))}
       </div>
     )
   )
 }
+
+export interface FavoritesProps {
+  favorites: Favorite[]
+} 
 
 export default Favorites

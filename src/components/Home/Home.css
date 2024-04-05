@@ -16,6 +16,7 @@ main {
   display: flex; 
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .header-container {
@@ -23,5 +24,22 @@ main {
   display: flex;
   justify-content: flex-end;
   padding: 10px 0px;
+}
+
+.main-wrapper {
   position: relative;
+}
+
+.favorite-button {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 32px;
+  right: 0;
+  z-index: 1;
+}
+
+.favorite-icon {
+  font-size: 20px;
+  color: var(--text-primary);
 }

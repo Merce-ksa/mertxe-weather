@@ -1,6 +1,6 @@
 export function getPermissionsLocation (): boolean {
   if(!navigator.geolocation) {
-    console.log('si quieres que te muestre el teimpo de tu localidad, activa la ubicación')
+    console.log('Si quieres que te muestre el teimpo de tu localidad, activa la ubicación')
     return true
   }
 
@@ -18,7 +18,6 @@ export async function getUserLocation (): Promise<[number, number]> {
         throw new Error('No se ha podido obtener la localización')
         console.log(error)
         reject()
-          
       }
     )
   })
