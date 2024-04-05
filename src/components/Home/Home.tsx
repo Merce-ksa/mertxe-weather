@@ -2,22 +2,21 @@
 import { useEffect, useState } from 'react'
 import useWeather from '../../hooks/useWeather'
 import { SuggestionsProvider } from '../../context/suggestions'
-
 import CurrentWeather from '../CurrentWeather'
 import Weather from '../Weather'
 import Favorites from '../Favorites'
 import Search from '../Search'
 import Switch from '../Switch'
 import { FaRegStar, FaStar } from 'react-icons/fa'
-import './Home.css'
 import Favorite from '../../types/Favorite'
 import useFavorites from '../../hooks/useFavorites'
+import './Home.css'
 
 function Home () {
   const [themeDark, setThemeDark] = useState<boolean>(false)
   const { weather, forecast } = useWeather()
-  const { favorites, isFavorite, setIsFavorite } = useFavorites()
-  
+  const { favorites, isFavorite, setIsFavorite, setFavorites } = useFavorites()
+
   useEffect(() => {
     document.body.setAttribute('data-theme', themeDark ? 'dark': 'light')
   }, [themeDark])
@@ -29,16 +28,18 @@ function Home () {
 
     const index = favorites.findIndex((favorite: Favorite) => favorite.city === weather.city)
 
-    if (index !== -1) {
-      favorites.splice(index, 1)
-    } else {
-      favorites.push({
+    if(index === -1) {
+      const newFavorites = {
         city: weather.city,
         temperature: weather.temperature,
         temperatureMax: weather.temperatureMax,
         temperatureMin: weather.temperatureMin,
         weatherIcon: weather.icon
-      })
+      }
+      setFavorites([...favorites, newFavorites])
+    } else {
+      const updatedFavorites = [...favorites.slice(0, index), ...favorites.slice(index + 1)]
+      setFavorites(updatedFavorites)
     }
 
     localStorage.setItem('favorites', JSON.stringify(favorites))

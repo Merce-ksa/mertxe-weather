@@ -21,7 +21,7 @@ function useFavorites () {
     }
   }, [weather])
 
-  return {isFavorite, favorites, setIsFavorite}
+  return {isFavorite, favorites, setIsFavorite, setFavorites}
 }
 
 export default useFavorites
