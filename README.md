@@ -1,41 +1,13 @@
-# Mertxe weather
+# My weather
 
-```bash
-npm create vite@latest
-```
+MyWeather is a weather forecast project! Access quickly to the local forecast.
 
+## Dependencies
 
-```bash
-  cd mertxe-weather
-  npm install
-  npm run dev
-```
+This project is bootstrapped with React and TypeScript. For testing, I've diceided to use Jest framwork and React Testing Library. Currently it is designed only for screens larger than 1024px.
 
-## Expanding the ESLint configuration
+## API OpenWeather
+To obtain the meteorological information, I have used the [OpenWeather API](https://openweathermap.org/).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-
-
-## Install jest
-```bash
-npm install -D jest jest-environment-jsdom @testing-library/react @testing-library/jest-dom
-npm init jest@latest
-```
+## API OpenWeather
+To obtain the suggest locations, I have used the [ArcGIS Developer API](https://developers.arcgis.com/rest/users-groups-and-items/suggest.htm).
