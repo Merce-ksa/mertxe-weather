@@ -46,6 +46,15 @@ function Home () {
     setIsFavorite(!isFavorite)
   }
 
+  const mountedStyle = {
+    animation: 'inVisibility 0.4s ease-in'
+  }
+
+  const unmountedStyle = {
+    animation: 'outVisibility 0.4s ease-out',
+    animationFillMode: 'forwards'
+  }
+
   return (
     <div>
       <div className='aside-main-container'>
@@ -63,9 +72,9 @@ function Home () {
             <div className='main-wrapper'>
               <button name='favorite-button' className='favorite-button' type="button" onClick={(event) => handleChangeFavorite(event)}>
                 {isFavorite ? 
-                  <FaStar className='favorite-icon' />
-                  :
-                  <FaRegStar className='favorite-icon' />
+                  <FaStar className='favorite-icon' style={isFavorite ? mountedStyle : unmountedStyle} /> 
+                  : 
+                  <FaRegStar className='favorite-icon' style={isFavorite ? unmountedStyle : mountedStyle} />
                 }
               </button>
               <CurrentWeather 

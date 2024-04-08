@@ -1,8 +1,18 @@
-.toggle-theme {
+.switch{
+    margin: 0 12px;
+}
+
+.switch-theme-button {
     padding: 5px;
     font-size: 18px;
 }
 
 .theme-icon {
+    transition: display 2s ease-in-out;
     color: var(--text-primary);
 }
+
+.theme-icon-visibility {
+    display: none;
+}
+

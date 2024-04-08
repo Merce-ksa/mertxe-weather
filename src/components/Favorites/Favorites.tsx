@@ -1,6 +1,5 @@
 import Favorite from '../../types/Favorite'
 import SmallCard from '../SmallCard'
-
 import './Favorites.css'
 
 function Favorites ({ favorites }: FavoritesProps) {

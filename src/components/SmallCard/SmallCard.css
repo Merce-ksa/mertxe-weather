@@ -2,7 +2,6 @@
 
 .small-card-container {
     padding: 8px;
-    /* background: var(--white); */
     border-radius: var(--radius);
     background-color: rgba(255, 255, 255, 0.2);
 }

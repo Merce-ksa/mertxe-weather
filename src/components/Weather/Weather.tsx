@@ -57,7 +57,7 @@ function Weather ({
   return (
     <>
       <div className='weather-container'>
-        <div className='weather-forecast weather-forecast'>
+        <div className='weather-forecast'>
           <Forecast forecastList={forecast} />
         </div>
         <div className='weather-temp-feels-like weather-item'>
