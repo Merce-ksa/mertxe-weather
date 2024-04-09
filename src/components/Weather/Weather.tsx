@@ -22,11 +22,12 @@ function Weather ({
   temperatureMin,
   temperatureMax,
   sunrise,
-  sunset,
+  sunset
 }: WeatherProps) {
   const {isDarkTheme} = useLightDarkTheme()
   
   const backgroundWind = isDarkTheme ? `url(${puntosCardinalesDark})` : `url(${puntosCardinalesLight})`
+
   return (
     <>
       <div className='weather-container'>

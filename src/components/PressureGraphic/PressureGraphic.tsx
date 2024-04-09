@@ -8,6 +8,7 @@ function PressureGraphic ({ pressure }: PressureGraphicProps) {
   const {isDarkTheme} = useLightDarkTheme()
 
   const textColor = isDarkTheme ? 'rgb(255, 255, 255)' : 'rgb(0, 82, 80)'
+
     
   useEffect(() => {
     const totalPressure = MAX_PRESSURE - MIN_PRESSURE

@@ -23,7 +23,6 @@ function SunriseSunsetGraphic ({sunrise, sunset}: SunriseSunsetGraphicProps) {
     setTransformLine(`translate(50 50) rotate(${angleDay + 2})`)
   }, [])
 
-
   return (
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' width='400'>
       <defs>

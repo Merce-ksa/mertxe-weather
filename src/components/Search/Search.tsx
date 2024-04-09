@@ -14,7 +14,6 @@ function Search () {
   const [selectedSuggestion, setSelectedSuggestion] = useState<boolean>(false)
 
   useEffect(() => {
-    // Realizar la solicitud a la API cuando el valor del campo de entrada cambie
     if (query.trim() !== '' && !selectedSuggestion) {
       getSuggestionsCityNames(query)
     } else {
