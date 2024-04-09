@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
 import { MAX_PRESSURE, MIN_PRESSURE } from '../../constants/values'
+import useLightDarkTheme from '../../hooks/useLightDarkTheme'
 
 function PressureGraphic ({ pressure }: PressureGraphicProps) {
   const [strokeDasharrayPressure, setStrokeDasharrayPressure] = useState<string>('')
   const [transformPres, setTransformPres] = useState<string>('')
+  const {isDarkTheme} = useLightDarkTheme()
+
+  const textColor = isDarkTheme ? 'rgb(255, 255, 255)' : 'rgb(0, 82, 80)'
     
   useEffect(() => {
     const totalPressure = MAX_PRESSURE - MIN_PRESSURE
@@ -39,10 +43,10 @@ function PressureGraphic ({ pressure }: PressureGraphicProps) {
       <rect width='100' height='60' fill='url(#gradientPress)' mask='url(#mask1)'/>
       <line id='linePressure' strokeLinecap='round' x1='-30' y1='0' x2='-36' y2='0' stroke='rgb(255, 255, 255)'
         strokeWidth='1.3' transform={transformPres} />
-      <text id='t1' x='50' y='40' textAnchor='middle' fill='rgb(235, 248, 161)'>{pressure}</text>
+      <text id='t1' x='50' y='40' textAnchor='middle' className='text-pressure'>{pressure}</text>
       <text id='t1' x='50' y='45' textAnchor='middle' fill='rgb(235, 248, 161)' fontSize='4'>hPa</text>
-      <text x='17' y='57' textAnchor='middle' fill='rgb(255, 255, 255)' fontSize='5'>Baja</text>
-      <text x='83' y='57' textAnchor='middle' fill='rgb(255, 255, 255)' fontSize='5'>Alta</text>
+      <text x='17' y='57' textAnchor='middle' fill={textColor} fontSize='5'>Baja</text>
+      <text x='83' y='57' textAnchor='middle' fill={textColor} fontSize='5'>Alta</text>
     </svg>
   )
 }

@@ -1,5 +1,4 @@
 
-import { useEffect, useState } from 'react'
 import useWeather from '../../hooks/useWeather'
 import { SuggestionsProvider } from '../../context/suggestions'
 import CurrentWeather from '../CurrentWeather'
@@ -13,13 +12,8 @@ import useFavorites from '../../hooks/useFavorites'
 import './Home.css'
 
 function Home () {
-  const [themeDark, setThemeDark] = useState<boolean>(false)
   const { weather, forecast } = useWeather()
   const { favorites, isFavorite, setIsFavorite, setFavorites } = useFavorites()
-
-  useEffect(() => {
-    document.body.setAttribute('data-theme', themeDark ? 'dark': 'light')
-  }, [themeDark])
 
   const handleChangeFavorite = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault()
@@ -66,7 +60,7 @@ function Home () {
             <SuggestionsProvider>
               <Search />
             </SuggestionsProvider>
-            <Switch themeDark={themeDark} setThemeDark={setThemeDark}/>
+            <Switch />
           </div>
           {weather && (
             <div className='main-wrapper'>

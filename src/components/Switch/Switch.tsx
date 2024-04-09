@@ -1,13 +1,15 @@
 import './Switch.css'
 import '../../theme/animations.css'
 import { MdDarkMode, MdLightMode } from 'react-icons/md'
+import useLightDarkTheme from '../../hooks/useLightDarkTheme'
 
-const Switch = ({themeDark, setThemeDark}: SwitchProps) => {
+const Switch = () => {
+  const {isDarkTheme, setIsDarkTheme} = useLightDarkTheme()
   
   const handleChangeTheme = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault()
 
-    setThemeDark(!themeDark)
+    setIsDarkTheme(!isDarkTheme)
   }
   
   const mountedStyle = {
@@ -28,20 +30,16 @@ const Switch = ({themeDark, setThemeDark}: SwitchProps) => {
         onClick={(event) => handleChangeTheme(event)}
         className='switch-theme-button'
       >
-        {themeDark ? 
-          <MdLightMode className='theme-icon' style={themeDark ? mountedStyle : unmountedStyle} /> 
+        {isDarkTheme ? 
+          <MdLightMode className='theme-icon' style={isDarkTheme ? mountedStyle : unmountedStyle} /> 
           : 
-          <MdDarkMode className='theme-icon' style={themeDark ? unmountedStyle : mountedStyle} />
+          <MdDarkMode className='theme-icon' style={isDarkTheme ? unmountedStyle : mountedStyle} />
         }
       </button>
     </div>
   )
 }
 
-export interface SwitchProps {
-  themeDark: boolean
-  setThemeDark: (theme: boolean) => void
-}
 
 
 export default Switch
