@@ -3,25 +3,20 @@
 
 :root {
   --primary: rgb(241, 93, 69);
-  --secondary: rgb(120, 203, 191);
-  --detail: rgb(72, 72, 74);
+  --secondary: rgb(183, 214, 236);
+  --detail: rgba(36, 113, 182, 0.5);
 
-  --background: rgb(242, 242, 242);
+  --gradient-background: linear-gradient(177deg, rgb(162, 192, 247) 0%, rgb(200, 217, 250) 50%, rgb(221, 232, 252) 100%);
+  --secondary-opacity: rgba(183, 214, 236, 0.4);
 
-  --card-background: rgb(20, 78, 139);
-  --card-background-opacity: rgba(20, 78, 139, 0.4);
-
-  /* --text-primary: rgb(36, 36, 36); */
-  --text-primary: rgb(255, 255, 255);
-  --text-title: rgb(110, 173, 232);
-  --text-disabled: rgb(184, 182, 182);
-
-  --button: rgb(48, 48, 53);
-  --input: rgb(42, 100, 163);
-
+  --text-primary: rgb(0, 82, 80);
+  --text-title: rgba(0, 82, 80, 0.5);
+  
+  
   --white: rgb(255, 255, 255);
+  --black: rgb(36, 36, 36);
   --transparent: transparent;
-
+  
   --font: 'Quicksand', sans-serif;
   --font-secondary: 'Roboto Mono', monospace;
   
@@ -30,14 +25,20 @@
   --medium: 500;
   --semi-bold: 600;
   --bold: 700;
-
+  
   --radius: 5px;
-
+  
   --shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
 }
 
 [data-theme='dark'] {
-  --background: #242424;
-
-  --text-primary: coral;
+  --primary: rgb(255, 255, 255);
+  --secondary: rgb(19, 44, 91);
+  --detail: rgba(36, 113, 182, 0.5);
+  
+  --gradient-background: linear-gradient(177deg, rgb(21, 50, 99) 0%, rgb(33, 75, 148)50%, rgb(32, 74, 149) 100%);
+  --secondary-opacity: rgba(19, 44, 91, 0.4);
+  
+  --text-primary: rgb(255, 255, 255);
+  --text-title: rgb(3, 139, 200);
 }

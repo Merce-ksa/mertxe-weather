@@ -8,7 +8,7 @@
 .aside-container {
   min-width: 260px; 
   min-height: 900px;
-  background: var(--card-background);
+  background-color: var(--secondary);
 }
 
 main {

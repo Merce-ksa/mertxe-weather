@@ -28,14 +28,14 @@
   padding: 8px;
   box-shadow: var(--shadow);
   border-radius: var(--radius);
-  background-color: rgba(36, 113, 182, 0.5);
+  background: var(--detail);
   text-align: center;
 }
 
 .weather-text {
   font-size: 25px;
   font-weight: var(--semi-bold);
-  color: var(--white);
+  color: var(--text-primary);
 }
 
 .weather-wind {
@@ -50,7 +50,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('../../assets/puntos-cardinales.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -58,7 +57,7 @@
 
 .arrow-wind {
   font-size: 30px;
-  color: var(--white)
+  color: var(--text-primary)
 }
 
 .wind-background {

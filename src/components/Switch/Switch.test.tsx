@@ -6,7 +6,7 @@ import Switch from '.'
 describe('Given a Page screen', () => {
   describe('When is rendered', () => {
     it('Then the component should be defined', () => {
-      render(<Switch themeDark={false} setThemeDark={jest.fn()} />)
+      render(<Switch />)
 
       
       const container = screen.getByTestId('switchWrapper')

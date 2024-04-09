@@ -1,4 +1,8 @@
-.toggle-theme {
+.switch{
+    margin: 0 12px;
+}
+
+.switch-theme-button {
     padding: 5px;
     font-size: 18px;
 }
@@ -6,3 +10,8 @@
 .theme-icon {
     color: var(--text-primary);
 }
+
+.theme-icon-visibility {
+    display: none;
+}
+

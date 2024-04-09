@@ -23,11 +23,11 @@
 }
 
 .icon-text-secondary {
-    color: var(--white);
+    color: var(--text-primary);
     font-size: 16px;
 }
 
 .icon-text-secondary p {
-    color: var(--white);
+    color: var(--text-primary);
     font-size: 16px;
 }

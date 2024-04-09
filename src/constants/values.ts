@@ -1,2 +1,2 @@
-export const MIN_PRESSURE = 973
-export const MAX_PRESSURE = 1053
+export const MIN_PRESSURE:number = 973
+export const MAX_PRESSURE:number = 1053
