@@ -8,7 +8,6 @@
 }
 
 .theme-icon {
-    transition: display 2s ease-in-out;
     color: var(--text-primary);
 }
 
