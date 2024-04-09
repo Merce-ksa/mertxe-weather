@@ -8,6 +8,9 @@ import SunriseSunsetGraphic from '../SunriseSunsetGraphic/SunriseSunsetGraphic'
 import PressureGraphic from '../PressureGraphic/PressureGraphic'
 import { WeatherForecastItem } from '../../types/forecast'
 import './Weather.css'
+import useLightDarkTheme from '../../hooks/useLightDarkTheme'
+import puntosCardinalesDark from '../../assets/puntos-cardinales-dark.png'
+import puntosCardinalesLight from '../../assets/puntos-cardinales-light.png'
 
 function Weather ({
   forecast,
@@ -21,6 +24,9 @@ function Weather ({
   sunrise,
   sunset,
 }: WeatherProps) {
+  const {isDarkTheme} = useLightDarkTheme()
+  
+  const backgroundWind = isDarkTheme ? `url(${puntosCardinalesDark})` : `url(${puntosCardinalesLight})`
   return (
     <>
       <div className='weather-container'>
@@ -55,7 +61,7 @@ function Weather ({
           <IconText icon={<BsWind />} info={'Viento'} isTitle={true} />
           <div className='weather-wind'>
             <p className='weather-text'>{`${windSpeed.toFixed(1)} km/h`}</p>
-            <p className='forecast-wind-rotate'>
+            <p className='forecast-wind-rotate' style={{backgroundImage: backgroundWind}}>
               <PiArrowRightBold style={{ transform: `rotate(-${windDeg}deg)`, transformOrigin: 'center' }} className='arrow-wind'/>
             </p>
           </div>
