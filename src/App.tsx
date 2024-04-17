@@ -5,6 +5,7 @@ import useCoordinates from './hooks/useCoordinates'
 import useWeather from './hooks/useWeather'
 import UNITS from './constants/units'
 import './App.css'
+import { FavoritesProvider } from './context/favorites'
 
 function App() {
   const { coordinates } = useCoordinates()
@@ -27,7 +28,9 @@ function App() {
 
   return (
     <div className='wrapper'>
-      <Home />
+      <FavoritesProvider>
+        <Home />
+      </FavoritesProvider>
     </div>
 
   )

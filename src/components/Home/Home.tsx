@@ -1,4 +1,3 @@
-
 import useWeather from '../../hooks/useWeather'
 import { SuggestionsProvider } from '../../context/suggestions'
 import CurrentWeather from '../CurrentWeather'
@@ -7,13 +6,26 @@ import Favorites from '../Favorites'
 import Search from '../Search'
 import Switch from '../Switch'
 import { FaRegStar, FaStar } from 'react-icons/fa'
-import Favorite from '../../types/Favorite'
 import useFavorites from '../../hooks/useFavorites'
 import './Home.css'
+import useFavoriteButton from '../../hooks/useFavoriteButton'
+import { useEffect } from 'react'
+import Favorite from '../../types/Favorite'
 
 function Home () {
   const { weather, forecast } = useWeather()
-  const { favorites, isFavorite, setIsFavorite, setFavorites } = useFavorites()
+  const { favorites, getStoredFavorites, addFavorites, removeFavorites } = useFavorites() 
+  const { isFavorite, setIsFavorite } = useFavoriteButton()
+
+  useEffect(() => {
+    getStoredFavorites()
+  }, [])
+
+  useEffect(() => {
+    if(!weather) return
+    const index = favorites.findIndex((favorite: Favorite) => favorite.city === weather.city)
+    index !== -1 ? setIsFavorite(true) : setIsFavorite(false)
+  }, [weather])
 
   const handleChangeFavorite = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault()
@@ -22,21 +34,15 @@ function Home () {
 
     const index = favorites.findIndex((favorite: Favorite) => favorite.city === weather.city)
 
-    if(index === -1) {
-      const newFavorites = {
-        city: weather.city,
-        temperature: weather.temperature,
-        temperatureMax: weather.temperatureMax,
-        temperatureMin: weather.temperatureMin,
-        weatherIcon: weather.icon
-      }
-      setFavorites([...favorites, newFavorites])
-    } else {
-      const updatedFavorites = [...favorites.slice(0, index), ...favorites.slice(index + 1)]
-      setFavorites(updatedFavorites)
-    }
+    index === -1 ? addFavorites({
+      city: weather.city,
+      temperature: weather.temperature,
+      temperatureMax: weather.temperatureMax,
+      temperatureMin: weather.temperatureMin,
+      weatherIcon: weather.icon}) 
+      :
+      removeFavorites(favorites[index].city) 
 
-    localStorage.setItem('favorites', JSON.stringify(favorites))
     setIsFavorite(!isFavorite)
   }
 
