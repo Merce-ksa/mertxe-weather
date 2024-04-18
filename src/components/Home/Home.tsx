@@ -79,9 +79,15 @@ function Home () {
                 data-testid='favorite-button'
               >
                 {isFavorite ? 
-                  <FaStar className='favorite-icon is-favorite' style={isFavorite ? mountedStyle : unmountedStyle} /> 
+                  <FaStar 
+                    className='favorite-icon is-favorite' 
+                    style={isFavorite ? mountedStyle : unmountedStyle} 
+                  /> 
                   : 
-                  <FaRegStar className='favorite-icon no-favorite' style={isFavorite ? unmountedStyle : mountedStyle} />
+                  <FaRegStar 
+                    className='favorite-icon not-favorite' 
+                    style={isFavorite ? unmountedStyle : mountedStyle} 
+                  />
                 }
               </button>
               <CurrentWeather 

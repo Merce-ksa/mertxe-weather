@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Home from './Home'
 import { FavoritesContext, FavoritesContextType } from '../../context/favorites'
@@ -61,12 +61,12 @@ describe('Given a Home component', ()=> {
   })
 
   describe('When the location is not in the favorites list', () => {
-    it('Then the icon containing the non-favorite class should be displayed', () => {
+    it('Then the icon add to favorite should be displayed', () => {
       const { getByRole } = customRender(weather_context_Mock, favorites_context_Mock)
 
       const favoriteButtonWrapper = getByRole('favorite-button')
 
-      expect(favoriteButtonWrapper.firstChild).toHaveClass('no-favorite')
+      expect(favoriteButtonWrapper.firstChild).toHaveClass('not-favorite')
     })
   })
 
@@ -80,7 +80,7 @@ describe('Given a Home component', ()=> {
       expect(favorites_context_Mock.addFavorites).toHaveBeenCalled()
     })
 
-    it('Then the favorite button must contain calss name is-favorite', async () => {
+    it('Then the my favorite icon should be displayed', async () => {
       const { getByTestId, getByRole } = customRender(weather_context_Mock, favorites_context_Mock)
 
       const favoriteAddButton = getByTestId('favorite-button')
@@ -88,8 +88,42 @@ describe('Given a Home component', ()=> {
       
       const favoriteButtonWrapper = getByRole('favorite-button')
 
-      await waitFor(() => expect(favoriteButtonWrapper.firstChild).toHaveClass('is-favorite'))
+      expect(favoriteButtonWrapper.firstChild).toHaveClass('is-favorite')
+    })
+
+    it('Then the "New York" should be rendered', () => {
+      const { getByTestId, getByText } = customRender(weather_context_Mock, favorites_context_Mock)
+
+      const favoriteAddButton = getByTestId('favorite-button')
+      fireEvent.click(favoriteAddButton)
+      
+      const newFavorite = getByText('New York')
+
+      expect(newFavorite).toBeInTheDocument()
+
     })
   })
-  
+
+  describe('When the location exist in favorites list', () => {
+    it('Then the favorite icon should be displayed', () => {
+      const { getByRole } = customRender(weather_context_Mock, {
+        favorites: [
+          {
+            city: 'New York',
+            temperature: 50,
+            temperatureMax: 50,
+            temperatureMin: 50,
+            weatherIcon: 'i10'
+          }
+        ],
+        getStoredFavorites: jest.fn(),
+        addFavorites: jest.fn(),
+        removeFavorites: jest.fn()
+      })
+
+      const favoriteButtonWrapper = getByRole('favorite-button')
+
+      expect(favoriteButtonWrapper.firstChild).toHaveClass('is-favorite')
+    })
+  })
 })
