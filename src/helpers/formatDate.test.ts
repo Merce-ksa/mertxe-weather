@@ -1,3 +1,4 @@
+import { waitFor } from '@testing-library/react'
 import WEATHER from '../mocks/weatherMock'
 import { formatDateEpochToLocalTime, formatDateToDayMonth, formatDateToJSON} from './formatDate'
 
@@ -14,17 +15,21 @@ describe('Given a formatDateEpochToLocalTime function', () => {
 
 describe('Given a formatDateToJSON function', () => {
   describe('When it is invoked', () => {
-    it('Then should return a date in format YYYY-MM-DD', () => {
+    it('Then should return a date in format YYYY-MM-DD', async () => {
       const dateObject = new Date()
       const YYYY = dateObject.getFullYear()
       const MM = dateObject.getMonth() + 1
-      const DD = dateObject.getDay()
+      const DD = dateObject.getDate()
       
-      const formatDD = DD.toString().length === 1 ? `0${DD}` : DD.toString()
-      const formatMM = MM.toString().length === 1 ? `0${MM}` : MM.toString()
-      const expected = `${YYYY}-${formatMM}-${formatDD}`
+      
 
-      expect(formatDateToJSON(dateObject)).toBe(expected)
+      await waitFor(() => {
+        const formatDD = DD.toString().length === 1 ? `0${DD}` : DD.toString()
+        const formatMM = MM.toString().length === 1 ? `0${MM}` : MM.toString()
+        const expected = `${YYYY}-${formatMM}-${formatDD}`
+        expect(formatDateToJSON(dateObject)).toBe(expected)
+      })
+
     })
   })
 })
