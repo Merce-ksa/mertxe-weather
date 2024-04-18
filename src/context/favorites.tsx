@@ -1,44 +1,44 @@
-import { ReactNode, createContext, useState } from 'react'
+import { ReactNode, createContext, useReducer } from 'react'
 import Favorite from '../types/Favorite'
+import { FavoritesActionTypes } from './favorites.actions.types'
+import { initialState } from './favorites.state'
+import { favoritesReducer } from './favorites.reducer'
+
 export interface FavoritesContextType {
   favorites: Favorite[]
   getStoredFavorites: () => void
-  addFavorites: ({city, temperature, temperatureMax, temperatureMin, weatherIcon}: Favorite) => void
+  addFavorites: (favorite: Favorite) => void
   removeFavorites: (city: string) => void
 }
 
 export const FavoritesContext = createContext<FavoritesContextType>({} as FavoritesContextType)
 
 export function FavoritesProvider ({children}: { children: ReactNode }) {
-  const [favorites, setFavorites] = useState<Favorite[]>([])
+  const [state, dispatch] = useReducer(favoritesReducer, initialState)
 
   const getStoredFavorites = () => {
     const storedFavorites = localStorage.getItem('favorites')
-    const favoritesFormatted = storedFavorites ? JSON.parse(storedFavorites) : []
-    setFavorites(favoritesFormatted)
+    const favorites = storedFavorites ? JSON.parse(storedFavorites) : []
+
+    dispatch({
+      type: FavoritesActionTypes.GET_STORED_FAVORITES,
+      payload: favorites
+    })
   }
 
-  const addFavorites = ({city, temperature, temperatureMax, temperatureMin, weatherIcon}: Favorite) => {
-    const newFavorites = {
-      city,
-      temperature,
-      temperatureMax,
-      temperatureMin,
-      weatherIcon
-    }
+  const addFavorites = (favorite: Favorite) => dispatch({
+    type: FavoritesActionTypes.ADD_FAVORITE,
+    payload: favorite
+  })  
 
-    setFavorites(prevState => [...prevState, newFavorites])
-    localStorage.setItem('favorites', JSON.stringify(favorites))
-  }
-  
-  const removeFavorites = (city: string) => {
-    setFavorites(prevState => prevState.filter(favorite => favorite.city !== city))
-    localStorage.setItem('favorites', JSON.stringify(favorites))
-  }
+  const removeFavorites = (city: string) => dispatch({
+    type: FavoritesActionTypes.REMOVE_FAVORITE,
+    payload: city
+  })
 
   return (
     <FavoritesContext.Provider value={{
-      favorites,
+      favorites: state,
       getStoredFavorites,
       addFavorites,
       removeFavorites

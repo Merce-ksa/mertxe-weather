@@ -1,4 +1,7 @@
+import { useEffect } from 'react'
 import useWeather from '../../hooks/useWeather'
+import useFavorites from '../../hooks/useFavorites'
+import useFavoriteButton from '../../hooks/useFavoriteButton'
 import { SuggestionsProvider } from '../../context/suggestions'
 import CurrentWeather from '../CurrentWeather'
 import Weather from '../Weather'
@@ -6,11 +9,8 @@ import Favorites from '../Favorites'
 import Search from '../Search'
 import Switch from '../Switch'
 import { FaRegStar, FaStar } from 'react-icons/fa'
-import useFavorites from '../../hooks/useFavorites'
-import './Home.css'
-import useFavoriteButton from '../../hooks/useFavoriteButton'
-import { useEffect } from 'react'
 import Favorite from '../../types/Favorite'
+import './Home.css'
 
 function Home () {
   const { weather, forecast } = useWeather()
@@ -61,7 +61,7 @@ function Home () {
         <aside className='aside-container'>
           <Favorites favorites={favorites} />
         </aside>
-        <main>
+        <main className='main-container'>
           <div className='header-container'>
             <SuggestionsProvider>
               <Search />
@@ -70,11 +70,18 @@ function Home () {
           </div>
           {weather && (
             <div className='main-wrapper'>
-              <button name='favorite-button' className='favorite-button' type="button" onClick={(event) => handleChangeFavorite(event)}>
+              <button 
+                name='favorite-button' 
+                className='favorite-button' 
+                type="button" 
+                onClick={(event) => handleChangeFavorite(event)} 
+                role='favorite-button'
+                data-testid='favorite-button'
+              >
                 {isFavorite ? 
-                  <FaStar className='favorite-icon' style={isFavorite ? mountedStyle : unmountedStyle} /> 
+                  <FaStar className='favorite-icon is-favorite' style={isFavorite ? mountedStyle : unmountedStyle} /> 
                   : 
-                  <FaRegStar className='favorite-icon' style={isFavorite ? unmountedStyle : mountedStyle} />
+                  <FaRegStar className='favorite-icon no-favorite' style={isFavorite ? unmountedStyle : mountedStyle} />
                 }
               </button>
               <CurrentWeather 

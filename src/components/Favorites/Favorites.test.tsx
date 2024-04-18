@@ -3,7 +3,7 @@ import {render, waitFor} from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Favorites from '.'
 import { FavoritesProps } from './Favorites'
-
+import FAVORITES_MOCK from '../../mocks/favoritesMock'
 function customRender({ favorites }: FavoritesProps) {
   return render(
     <Favorites favorites = {favorites} />
@@ -11,22 +11,7 @@ function customRender({ favorites }: FavoritesProps) {
 }
 
 const initialProps = {
-  favorites: [
-    {
-      city: 'Madrid',
-      temperature: 12.21,
-      temperatureMax: 14.53,
-      temperatureMin: 10.68,
-      weatherIcon: '01d'
-    },
-    {
-      city: 'Málaga',
-      temperature: 15.64,
-      temperatureMax: 20.39,
-      temperatureMin: 12.94,
-      weatherIcon: '01d'
-    }
-  ]
+  favorites: FAVORITES_MOCK
 }
   
 describe('Given a Favorites component', ()=> {
@@ -41,6 +26,15 @@ describe('Given a Favorites component', ()=> {
       const { findByText } = customRender(initialProps)
 
       await waitFor(() => expect(findByText(/^12.21/)).toBeDefined())
+    })
+
+    it('Then the all locations to be defined', () => {
+      const {container} = customRender(initialProps)
+        
+      const favoritesClassName = container.querySelectorAll('.favorites-smallCard-container')
+      const totalFavorites = initialProps.favorites.length
+      
+      expect(favoritesClassName).toHaveLength(totalFavorites)
     })
   })
 })

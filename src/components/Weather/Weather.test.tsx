@@ -5,6 +5,8 @@ import WEATHER from '../../mocks/weatherMock'
 import FORECAST from '../../mocks/forecastMock'
 import Weather, { WeatherProps } from './Weather'
 
+jest.mock('../../assets/puntos-cardinales-dark.png')
+jest.mock('../../assets/puntos-cardinales-light.png')
 
 function customRender(props: WeatherProps) {
   return render(
