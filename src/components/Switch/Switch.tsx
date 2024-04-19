@@ -2,6 +2,7 @@ import './Switch.css'
 import '../../theme/animations.css'
 import { MdDarkMode, MdLightMode } from 'react-icons/md'
 import useLightDarkTheme from '../../hooks/useLightDarkTheme'
+import AnimatedButton from '../AnimatedButton'
 
 const Switch = () => {
   const {isDarkTheme, setIsDarkTheme} = useLightDarkTheme()
@@ -11,17 +12,7 @@ const Switch = () => {
 
     setIsDarkTheme(!isDarkTheme)
   }
-  
-  const mountedStyle = {
-    animation: 'inVisibility 0.4s ease-in'
-  }
-
-  const unmountedStyle = {
-    animation: 'outVisibility 0.4s ease-out',
-    animationFillMode: 'forwards'
-  }
-
-  
+    
   return (
     <div id='switch' className='switch' data-testid='switchWrapper'>
       <button
@@ -30,11 +21,11 @@ const Switch = () => {
         onClick={(event) => handleChangeTheme(event)}
         className='switch-theme-button'
       >
-        {isDarkTheme ? 
-          <MdLightMode className='theme-icon' style={isDarkTheme ? mountedStyle : unmountedStyle} /> 
-          : 
-          <MdDarkMode className='theme-icon' style={isDarkTheme ? unmountedStyle : mountedStyle} />
-        }
+        <AnimatedButton 
+          isTruthy={isDarkTheme} 
+          IconIsTruthy={MdLightMode} 
+          IconIsFalsy={MdDarkMode} 
+        />
       </button>
     </div>
   )
