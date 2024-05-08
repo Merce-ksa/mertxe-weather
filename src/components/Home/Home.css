@@ -6,7 +6,7 @@
 }
   
 .aside-container {
-  min-width: 260px; 
+  width: 260px;
   min-height: 900px;
   background-color: var(--secondary);
 }

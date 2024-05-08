@@ -1,5 +1,5 @@
-import {render} from '@testing-library/react'
-import {screen} from '@testing-library/dom'
+import { render } from '@testing-library/react'
+import { screen } from '@testing-library/dom'
 import '@testing-library/jest-dom'
 
 import SmallCard, { SmallCardProps } from './SmallCard'
@@ -23,7 +23,7 @@ const initialProps = {
   temperature: WEATHER.temperature,
   temperatureMin: WEATHER.temperatureMin,
   temperatureMax: WEATHER.temperatureMax,
-  icon: WEATHER.icon,
+  icon: WEATHER.icon
 }
 
 describe('Given a SmallCard component', ()=> {
@@ -42,7 +42,7 @@ describe('Given a SmallCard component', ()=> {
       const temperature = screen.getByText(/^20.0/)
         
       expect(temperature).toHaveTextContent(
-        '20.0º',
+        '20.0º'
       )
     })
   })
