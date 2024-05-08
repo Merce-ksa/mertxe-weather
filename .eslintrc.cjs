@@ -23,11 +23,10 @@ module.exports = {
     "react-hooks/rules-of-hooks": 'error',
     "react-hooks/exhaustive-deps": 'warn',
     'quotes': ['error', 'single'],
-    // we want to force semicolons
-    'semi': ['error', 'never'],
-    // we use 2 spaces to indent our code
+    'object-curly-spacing': ['error', 'always'],
     'indent': ['error', 2],
-    // we want to avoid extraneous spaces
-    'no-multi-spaces': ['error'],
+    'no-multi-spaces': ['error', { 'ignoreEOLComments': true }],
+    'no-multiple-empty-lines': ['error', { 'max': 1 }],
+    'comma-dangle': ['error', 'never']
   }
 }

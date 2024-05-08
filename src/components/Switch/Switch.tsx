@@ -5,7 +5,7 @@ import useLightDarkTheme from '../../hooks/useLightDarkTheme'
 import AnimatedButton from '../AnimatedButton'
 
 const Switch = () => {
-  const {isDarkTheme, setIsDarkTheme} = useLightDarkTheme()
+  const { isDarkTheme, setIsDarkTheme } = useLightDarkTheme()
   
   const handleChangeTheme = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault()
@@ -30,7 +30,5 @@ const Switch = () => {
     </div>
   )
 }
-
-
 
 export default Switch
