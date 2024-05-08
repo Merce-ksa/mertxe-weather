@@ -8,8 +8,7 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
 import { WeatherForecastItem } from '../../types/forecast'
 import { formatDateToDayMonth } from '../../helpers/formatDate'
 
-
-function Forecast ({forecastList}: ForecastProps) {
+function Forecast ({ forecastList }: ForecastProps) {
 
   const forecastListKeys = Object.keys(forecastList)
   
@@ -34,7 +33,7 @@ function Forecast ({forecastList}: ForecastProps) {
               <img src={formatUrlImage(item.icon)} alt="icon resum weather" className='forecast-icon' />  
               <IconText icon={<BsThermometerHalf />} info={`${item.temperature.toFixed(1)} ºC`} />
               <IconText icon={<BsWind />} info={`${item.windSpeed} km/h`} />
-              <IconText icon={<BsUmbrella />} info={`${item.precipitationProbability * 100} %`} />
+              <IconText icon={<BsUmbrella />} info={`${(item.precipitationProbability * 100).toFixed(1)} %`} />
               {item.rain &&<IconText icon={<WiRaindrop />} info={`${item.rain} mm`} />}
               {item.snow &&<IconText icon={<IoIosSnow />} info={`${item.snow} mm`} />}
             </div>
