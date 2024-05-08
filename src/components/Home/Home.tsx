@@ -40,7 +40,7 @@ function Home () {
       temperature: weather.temperature,
       temperatureMax: weather.temperatureMax,
       temperatureMin: weather.temperatureMin,
-      weatherIcon: weather.icon}) 
+      weatherIcon: weather.icon }) 
       :
       removeFavorites(favorites[index].city) 
 
@@ -70,17 +70,6 @@ function Home () {
                 role='favorite-button'
                 data-testid='favorite-button'
               >
-                {/* {isFavorite ? 
-                  <FaStar 
-                    className='favorite-icon is-favorite' 
-                    style={isFavorite ? mountedStyle : unmountedStyle} 
-                  /> 
-                  : 
-                  <FaRegStar 
-                    className='favorite-icon not-favorite' 
-                    style={isFavorite ? unmountedStyle : mountedStyle} 
-                  />
-                } */}
                 <AnimatedButton 
                   isTruthy={isFavorite} 
                   IconIsTruthy={FaStar} 
