@@ -2,33 +2,33 @@ import { IconType } from 'react-icons'
 import '../../theme/animations.css'
 import './AnimatedButton.css'
 
-function AnimatedButton({isTruthy, IconIsTruthy, IconIsFalsy, extraClass}: AnimatedButtonProps) {
-  const mountedStyle = {
-    animation: 'inVisibility 0.4s ease-in'
-  }
-    
-  const unmountedStyle = {
-    animation: 'outVisibility 0.4s ease-out',
-    animationFillMode: 'forwards'
-  }
+function AnimatedButton({ isTruthy, IconIsTruthy, IconIsFalsy, extraClass }: AnimatedButtonProps) {
   return (
     <>
       {isTruthy ? 
         <IconIsTruthy 
-          className={`theme-icon ${extraClass}`} 
-          style={isTruthy ? mountedStyle : unmountedStyle} 
+          className={`
+            theme-icon 
+            icon-is-truthy 
+            ${isTruthy ? 'in-visibility-animation' : 'out-visibility-animation'}
+            ${extraClass && ''} 
+          `}
         />
         : 
         <IconIsFalsy 
-          className={`theme-icon ${extraClass}`} 
-          style={isTruthy ? unmountedStyle : mountedStyle} 
+          className={`
+            theme-icon
+            icon-is-falsy 
+            ${isTruthy ? 'out-visibility-animation' : 'in-visibility-animation'}
+            ${extraClass && ''} 
+          `}
         />
       }
     </>
   )
 }
 
-interface AnimatedButtonProps {
+export interface AnimatedButtonProps {
     isTruthy: boolean
     IconIsTruthy: IconType
     IconIsFalsy: IconType
