@@ -11,6 +11,7 @@ import Switch from '../Switch'
 import { FaRegStar, FaStar } from 'react-icons/fa'
 import Favorite from '../../types/Favorite'
 import './Home.css'
+import AnimatedButton from '../AnimatedButton'
 
 function Home () {
   const { weather, forecast } = useWeather()
@@ -39,20 +40,11 @@ function Home () {
       temperature: weather.temperature,
       temperatureMax: weather.temperatureMax,
       temperatureMin: weather.temperatureMin,
-      weatherIcon: weather.icon}) 
+      weatherIcon: weather.icon }) 
       :
       removeFavorites(favorites[index].city) 
 
     setIsFavorite(!isFavorite)
-  }
-
-  const mountedStyle = {
-    animation: 'inVisibility 0.4s ease-in'
-  }
-
-  const unmountedStyle = {
-    animation: 'outVisibility 0.4s ease-out',
-    animationFillMode: 'forwards'
   }
 
   return (
@@ -78,17 +70,11 @@ function Home () {
                 role='favorite-button'
                 data-testid='favorite-button'
               >
-                {isFavorite ? 
-                  <FaStar 
-                    className='favorite-icon is-favorite' 
-                    style={isFavorite ? mountedStyle : unmountedStyle} 
-                  /> 
-                  : 
-                  <FaRegStar 
-                    className='favorite-icon not-favorite' 
-                    style={isFavorite ? unmountedStyle : mountedStyle} 
-                  />
-                }
+                <AnimatedButton 
+                  isTruthy={isFavorite} 
+                  IconIsTruthy={FaStar} 
+                  IconIsFalsy={FaRegStar} 
+                />
               </button>
               <CurrentWeather 
                 city={weather.city}

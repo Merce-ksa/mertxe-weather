@@ -1,5 +1,5 @@
 
-import {render, screen} from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import IconText, { IconTextProps } from './IconText'
@@ -24,7 +24,7 @@ const initialProps = {
 describe('Given a IconText component', ()=> {
   describe('When is rendered', ()=> {
     it('Then the icon to be defined', () => {
-      const {container} = customRender(initialProps)
+      const { container } = customRender(initialProps)
         
       const svgIcon = container.querySelectorAll('#Layer_1')
 
@@ -44,7 +44,7 @@ describe('Given a IconText component', ()=> {
     it('Then the class name to be icon-text-primary', () => {
       const props = {
         ...initialProps,
-        isTitle: true,
+        isTitle: true
       }
 
       const { getByTestId } = customRender(props)

@@ -4,11 +4,7 @@
 
 .switch-theme-button {
     padding: 5px;
-    font-size: 18px;
-}
-
-.theme-icon {
-    color: var(--text-primary);
+    /* font-size: 18px; */
 }
 
 .theme-icon-visibility {

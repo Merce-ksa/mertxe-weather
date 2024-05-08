@@ -66,7 +66,7 @@ describe('Given a Home component', ()=> {
 
       const favoriteButtonWrapper = getByRole('favorite-button')
 
-      expect(favoriteButtonWrapper.firstChild).toHaveClass('not-favorite')
+      expect(favoriteButtonWrapper.firstChild).toHaveClass('icon-is-falsy')
     })
   })
 
@@ -88,7 +88,7 @@ describe('Given a Home component', ()=> {
       
       const favoriteButtonWrapper = getByRole('favorite-button')
 
-      expect(favoriteButtonWrapper.firstChild).toHaveClass('is-favorite')
+      expect(favoriteButtonWrapper.firstChild).toHaveClass('icon-is-truthy')
     })
 
     it('Then the "New York" should be rendered', () => {
@@ -123,7 +123,7 @@ describe('Given a Home component', ()=> {
 
       const favoriteButtonWrapper = getByRole('favorite-button')
 
-      expect(favoriteButtonWrapper.firstChild).toHaveClass('is-favorite')
+      expect(favoriteButtonWrapper.firstChild).toHaveClass('icon-is-truthy')
     })
   })
 })

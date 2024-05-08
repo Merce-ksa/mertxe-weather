@@ -24,7 +24,7 @@ function Weather ({
   sunrise,
   sunset
 }: WeatherProps) {
-  const {isDarkTheme} = useLightDarkTheme()
+  const { isDarkTheme } = useLightDarkTheme()
   
   const backgroundWind = isDarkTheme ? `url(${puntosCardinalesDark})` : `url(${puntosCardinalesLight})`
 
@@ -62,7 +62,7 @@ function Weather ({
           <IconText icon={<BsWind />} info={'Viento'} isTitle={true} />
           <div className='weather-wind'>
             <p className='weather-text'>{`${windSpeed.toFixed(1)} km/h`}</p>
-            <p className='forecast-wind-rotate' style={{backgroundImage: backgroundWind}}>
+            <p className='forecast-wind-rotate' style={{ backgroundImage: backgroundWind }}>
               <PiArrowRightBold style={{ transform: `rotate(-${windDeg}deg)`, transformOrigin: 'center' }} className='arrow-wind'/>
             </p>
           </div>
