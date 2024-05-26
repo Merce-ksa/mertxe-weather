@@ -8,12 +8,13 @@ export interface FavoritesContextType {
   favorites: Favorite[]
   getStoredFavorites: () => void
   addFavorites: (favorite: Favorite) => void
+  updateFavorite: (favorite: Favorite) => void
   removeFavorites: (city: string) => void
 }
 
 export const FavoritesContext = createContext<FavoritesContextType>({} as FavoritesContextType)
 
-export function FavoritesProvider ({children}: { children: ReactNode }) {
+export function FavoritesProvider ({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(favoritesReducer, initialState)
 
   const getStoredFavorites = () => {
@@ -28,6 +29,11 @@ export function FavoritesProvider ({children}: { children: ReactNode }) {
 
   const addFavorites = (favorite: Favorite) => dispatch({
     type: FavoritesActionTypes.ADD_FAVORITE,
+    payload: favorite 
+  })  
+
+  const updateFavorite = (favorite: Favorite) => dispatch({
+    type: FavoritesActionTypes.UPDATE_FAVORITE,
     payload: favorite
   })  
 
@@ -41,6 +47,7 @@ export function FavoritesProvider ({children}: { children: ReactNode }) {
       favorites: state,
       getStoredFavorites,
       addFavorites,
+      updateFavorite,
       removeFavorites
     }}>
       {children}

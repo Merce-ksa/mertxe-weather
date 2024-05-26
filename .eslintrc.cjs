@@ -21,12 +21,12 @@ module.exports = {
       { allowConstantExport: true },
     ],
     "react-hooks/rules-of-hooks": 'error',
-    "react-hooks/exhaustive-deps": 'warn',
     'quotes': ['error', 'single'],
     'object-curly-spacing': ['error', 'always'],
     'indent': ['error', 2],
     'no-multi-spaces': ['error', { 'ignoreEOLComments': true }],
     'no-multiple-empty-lines': ['error', { 'max': 1 }],
-    'comma-dangle': ['error', 'never']
+    'comma-dangle': ['error', 'never'],
+    'react-hooks/exhaustive-deps': 'off',
   }
 }

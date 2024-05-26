@@ -1,6 +1,6 @@
 @import url('../../theme/theme.css');
 
-.aside-main-container {
+.home-container {
   display: flex;
   height: 100%;
 }

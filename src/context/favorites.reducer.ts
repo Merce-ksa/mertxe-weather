@@ -1,7 +1,6 @@
 import Favorite from '../types/Favorite'
 import { FavoritesActionTypes, FavoritesActions } from './favorites.actions.types'
 
-
 const updateStore = (currentFavorites: Favorite[]) => {
   localStorage.setItem('favorites', JSON.stringify(currentFavorites))
 }
@@ -24,6 +23,24 @@ export const favoritesReducer = (state: Favorite[], action: FavoritesActions) =>
     updateStore(newState)
     return newState
   }
+  case FavoritesActionTypes.UPDATE_FAVORITE: {
+    const updatedFavorite = action.payload
+    const newState = state.map(favorite =>
+      favorite.city === updatedFavorite.city
+        ? { 
+          ...favorite, 
+          temperature:  updatedFavorite.temperature,
+          temperatureMax: updatedFavorite.temperatureMax,
+          temperatureMin: updatedFavorite.temperatureMin,
+          weatherIcon: updatedFavorite.weatherIcon
+        }
+        : favorite
+    )
+
+    updateStore(newState)
+
+    return newState
+  }
   case FavoritesActionTypes.REMOVE_FAVORITE: {
     const city = action.payload
     const newState = state.filter((item: Favorite) => item.city !== city)
@@ -32,7 +49,5 @@ export const favoritesReducer = (state: Favorite[], action: FavoritesActions) =>
   
     return newState
   }
-    
-    return state
   }
 }

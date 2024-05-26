@@ -32,6 +32,7 @@ const favorites_context_Mock: FavoritesContextType = {
   favorites: FAVORITE_MOCK,
   getStoredFavorites: jest.fn(),
   addFavorites: jest.fn(),
+  updateFavorite: jest.fn(),
   removeFavorites: jest.fn()
 }
 
@@ -118,6 +119,7 @@ describe('Given a Home component', ()=> {
         ],
         getStoredFavorites: jest.fn(),
         addFavorites: jest.fn(),
+        updateFavorite: jest.fn(),
         removeFavorites: jest.fn()
       })
 

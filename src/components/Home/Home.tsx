@@ -15,7 +15,7 @@ import AnimatedButton from '../AnimatedButton'
 
 function Home () {
   const { weather, forecast } = useWeather()
-  const { favorites, getStoredFavorites, addFavorites, removeFavorites } = useFavorites() 
+  const { favorites, getStoredFavorites, addFavorites, updateFavorite, removeFavorites } = useFavorites() 
   const { isFavorite, setIsFavorite } = useFavoriteButton()
 
   useEffect(() => {
@@ -25,16 +25,22 @@ function Home () {
   useEffect(() => {
     if(!weather) return
     const index = favorites.findIndex((favorite: Favorite) => favorite.city === weather.city)
+    
     index !== -1 ? setIsFavorite(true) : setIsFavorite(false)
+    index !== -1 && favorites[index].temperature !== weather.temperature &&
+      updateFavorite({ 
+        city: weather.city,
+        temperature: weather.temperature, 
+        temperatureMax: weather.temperatureMax, 
+        temperatureMin: weather.temperatureMin, 
+        weatherIcon: weather.icon })
   }, [weather])
 
   const handleChangeFavorite = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault()
 
     if(!weather) return
-
     const index = favorites.findIndex((favorite: Favorite) => favorite.city === weather.city)
-
     index === -1 ? addFavorites({
       city: weather.city,
       temperature: weather.temperature,
@@ -49,7 +55,7 @@ function Home () {
 
   return (
     <div>
-      <div className='aside-main-container'>
+      <div className='home-container'>
         <aside className='aside-container'>
           <Favorites favorites={favorites} />
         </aside>
